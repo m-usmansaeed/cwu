@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-01T00:40:35+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Coding with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Lorem Ipsum is simply dummy text</title><link href="https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/" rel="alternate" type="text/html" title="Lorem Ipsum is simply dummy text" /><published>2024-04-30T00:00:00+05:00</published><updated>2024-04-30T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/"><![CDATA[<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+<p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+<!-- <div class="friends">
+    <span>
+        <b>Title will be here.</b> <br>
+        Description will be here. <a href="https://google.com">Try now</a>
+    </span>
+</div>
+ -->
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+
+<span class="kd">class</span> <span class="kt">CalculatorModel</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="n">_</span> <span class="nv">number1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">number2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">number1</span> <span class="o">+</span> <span class="n">number2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</code> Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+<p>I hope you enjoy the post. Feel free to follow me on <a href="https://twitter.com">Twitter</a> and ask your questions related to this post. Thanks for reading, and see you next week!</p>]]></content><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><category term="Test" /><summary type="html"><![CDATA[Lorem Ipsum is simply dummy text of the printing and typesetting industry.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://m-usmansaeed.github.io/cwu/public/margins3.png" /><media:content medium="image" url="https://m-usmansaeed.github.io/cwu/public/margins3.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
