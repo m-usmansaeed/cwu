@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-01T00:46:35+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Coding with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Lorem Ipsum is simply dummy text</title><link href="https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/" rel="alternate" type="text/html" title="Lorem Ipsum is simply dummy text" /><published>2024-04-30T00:00:00+05:00</published><updated>2024-04-30T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/"><![CDATA[<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-01T01:32:05+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Coding with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Lorem Ipsum is simply dummy text</title><link href="https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/" rel="alternate" type="text/html" title="Lorem Ipsum is simply dummy text" /><published>2024-04-30T00:00:00+05:00</published><updated>2024-04-30T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/"><![CDATA[<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 
 <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
@@ -10,14 +10,73 @@
 </div>
  -->
 
-<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">Foundation</span>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">UIKit</span>
 
-<span class="kd">class</span> <span class="kt">CalculatorModel</span> <span class="p">{</span>
-    <span class="k">var</span> <span class="nv">result</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="kd">class</span> <span class="kt">BadgedButtonItem</span><span class="p">:</span> <span class="kt">UIBarButtonItem</span> <span class="p">{</span>
 
-    <span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="n">_</span> <span class="nv">number1</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="n">_</span> <span class="nv">number2</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">number1</span> <span class="o">+</span> <span class="n">number2</span>
+    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">setBadge</span><span class="p">(</span><span class="n">with</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">badgeValue</span> <span class="o">=</span> <span class="n">value</span>
     <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">badgeValue</span><span class="p">:</span> <span class="kt">Int</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">didSet</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">value</span> <span class="o">=</span> <span class="n">badgeValue</span><span class="p">,</span>
+                <span class="n">value</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="n">lblBadge</span><span class="o">.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="kc">false</span>
+                <span class="n">lblBadge</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">"</span><span class="se">\(</span><span class="n">value</span><span class="se">)</span><span class="s">"</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">lblBadge</span><span class="o">.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nv">tapAction</span><span class="p">:</span> <span class="p">(()</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span>
+
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">filterBtn</span> <span class="o">=</span> <span class="kt">UIButton</span><span class="p">()</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">lblBadge</span> <span class="o">=</span> <span class="kt">UILabel</span><span class="p">()</span>
+
+    <span class="k">override</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+        <span class="nf">setup</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="nf">init</span><span class="p">(</span><span class="n">with</span> <span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">()</span>
+        <span class="nf">setup</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="n">image</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">required</span> <span class="nf">init</span><span class="p">?(</span><span class="n">coder</span> <span class="nv">aDecoder</span><span class="p">:</span> <span class="kt">NSCoder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">super</span><span class="o">.</span><span class="nf">init</span><span class="p">(</span><span class="nv">coder</span><span class="p">:</span> <span class="n">aDecoder</span><span class="p">)</span>
+        <span class="nf">setup</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kd">func</span> <span class="nf">setup</span><span class="p">(</span><span class="nv">image</span><span class="p">:</span> <span class="kt">UIImage</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">filterBtn</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">30</span><span class="p">)</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">filterBtn</span><span class="o">.</span><span class="n">adjustsImageWhenHighlighted</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">filterBtn</span><span class="o">.</span><span class="nf">setImage</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">normal</span><span class="p">)</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">filterBtn</span><span class="o">.</span><span class="nf">addTarget</span><span class="p">(</span><span class="k">self</span><span class="p">,</span> <span class="nv">action</span><span class="p">:</span> <span class="kd">#selector(</span><span class="nf">buttonPressed</span><span class="kd">)</span><span class="p">,</span> <span class="nv">for</span><span class="p">:</span> <span class="o">.</span><span class="n">touchUpInside</span><span class="p">)</span>
+
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="kt">CGRect</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">width</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">15</span><span class="p">)</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">white</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">clipsToBounds</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">layer</span><span class="o">.</span><span class="n">cornerRadius</span> <span class="o">=</span> <span class="mi">7</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="kt">R</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="nf">app_Red_Color</span><span class="p">()</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="kt">UIFont</span><span class="o">.</span><span class="nf">systemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">textAlignment</span> <span class="o">=</span> <span class="o">.</span><span class="n">center</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">isHidden</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">minimumScaleFactor</span> <span class="o">=</span> <span class="mf">0.1</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">lblBadge</span><span class="o">.</span><span class="n">adjustsFontSizeToFitWidth</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">filterBtn</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">lblBadge</span><span class="p">)</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">customView</span> <span class="o">=</span> <span class="n">filterBtn</span>
+    <span class="p">}</span>
+
+    <span class="kd">@objc</span> <span class="kd">func</span> <span class="nf">buttonPressed</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">action</span> <span class="o">=</span> <span class="n">tapAction</span> <span class="p">{</span>
+            <span class="nf">action</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
 <span class="p">}</span>
 </code></pre></div></div>
 
