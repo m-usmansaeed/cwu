@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://m-usmansaeed.github.io/cwu/2024/04/30/lorem-ipsom-is-simple-dummy-text/</loc>
-<lastmod>2024-04-30T00:00:00+05:00</lastmod>
+<loc>https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/</loc>
+<lastmod>2024-05-02T00:00:00+05:00</lastmod>
+</url>
+<url>
+<loc>https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/</loc>
+<lastmod>2024-05-03T00:00:00+05:00</lastmod>
 </url>
 <url>
 <loc>https://m-usmansaeed.github.io/cwu/archive/</loc>

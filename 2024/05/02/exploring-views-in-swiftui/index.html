@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=[?]">
+  </script>
+  
+  <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', '[?]');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="swift ios development apple watch iphone ipad swiftui macos uikit dev wwdc tutorial guide redux tea state container" />
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Exploring Views in SwiftUI | Code with Usman</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="Exploring Views in SwiftUI" />
+<meta name="author" content="Usman Saeed" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences." />
+<meta property="og:description" content="In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences." />
+<link rel="canonical" href="https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/" />
+<meta property="og:url" content="https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/" />
+<meta property="og:site_name" content="Code with Usman" />
+<meta property="og:image" content="https://m-usmansaeed.github.io/cwu/public/" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-05-02T00:00:00+05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://m-usmansaeed.github.io/cwu/public/" />
+<meta property="twitter:title" content="Exploring Views in SwiftUI" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Usman Saeed","url":"https://twitter.com/"},"dateModified":"2024-05-02T00:00:00+05:00","datePublished":"2024-05-02T00:00:00+05:00","description":"In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences.","headline":"Exploring Views in SwiftUI","image":"https://m-usmansaeed.github.io/cwu/public/","mainEntityOfPage":{"@type":"WebPage","@id":"https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/"},"url":"https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="me" href="_https://me/@mysocialaccount">
+  <link rel="stylesheet" href="/cwu/styles.css">
+  <link rel="shortcut icon" href="/cwu/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="Code with Usman" href="/cwu/feed.xml">
+</head>
+
+
+<body>
+
+  <header class="masthead">
+
+    <script src="/cwu/scripts/toggle.js"></script>
+
+    <nav>
+
+      <div class="links">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <h1 class="masthead-title">
+            <a href="/cwu/" title="Home">
+              Code with Usman
+            </a>
+          </h1>
+
+          <a href="/cwu/categories" title="Categories">Categories</a>
+          <a href="/cwu/archive" title="Archive">Archive</a>
+        </div>
+
+        <div style="flex: 0; padding-right: 10px;">
+          <div class="tdnn">
+            <div class="moon"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <div style="height: 120px;"></div>
+
+  <div class="container content">
+
+    <main>
+      <div>
+        <article class="post">
+  <section class="help-section">
+    <div class="shadow-image"></div>
+    <div class="content-wrapper">
+        <h2 style="color: #fff;">Together, we can innovate</h2>
+        <div class="actions">
+            <a href="https://www.linkedin.com/in/usman-saeed-9774997b" class="action-link"
+                style="background-color: #0969da;">
+                <svg fill="#fff" viewBox="0 0 310 310" height="28px" width="28px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="XMLID_801_">
+                        <path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+                      C77.16,101.969,74.922,99.73,72.16,99.73z" />
+                        <path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+                      c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z" />
+                        <path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+                      c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+                      c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+                      C310,145.43,300.549,94.761,230.454,94.761z" />
+                    </g>
+                </svg>
+            </a>
+
+            <a href="https://www.upwork.com/freelancers/~01c392492536637a7f" class="action-link"
+                style="background-color: #14a800;">
+                <svg height="28" viewBox=".26 -.21 500 500" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m359.92 303.51c-31.11 0-51.69-24.01-57.45-33.35 7.36-59.01 28.93-77.61 57.45-77.61 28.18 0 50.13 22.53 50.13 55.48s-21.95 55.48-50.13 55.48m0-147.18c-50.71 0-79.13 33.07-87.25 67.12-9.24-17.34-16.04-40.54-21.4-62.1h-70.09v87.24c0 31.7-14.38 55.07-42.59 55.07s-44.37-23.37-44.37-55.06l.3-87.25h-40.4v87.24c0 25.47 8.26 48.56 23.26 65.04 15.48 16.98 36.64 25.95 61.19 25.95 48.78 0 82.81-37.41 82.81-90.96v-58.62c5.14 19.29 17.2 56.39 40.41 88.92l-21.68 123.44h41.08l14.31-87.52c4.7 3.89 9.68 7.41 14.9 10.55a90.604 90.604 0 0 0 45.69 14.09h.08c1.21 0 2.44.07 3.69.07 50.29 0 90.34-38.94 90.34-91.43.01-52.52-40-91.79-90.28-91.79"
+                        fill='#fff' />
+                </svg>
+            </a>
+
+            <a href="https://www.freelancer.com/u/itsusmansaeed" class="action-link" style="background-color: #fff;">
+                <svg viewBox="-0.23 0 97.266 72.333" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                    <path
+                        d="M56.897 0l6.624 9.29L97.036 0M22.075 72.333l18.13-17.725-10.912-11.71M54.152 0l-9.69 8.738 16.298.608M16.482 0l3.48 7.133 19.18 1.195M26.75 36.986l14.17-26.434L-.23 8.328M28.4 38.662L41.785 53.04 56.55 38.567l4.582-26.957-17.993-.918"
+                        fill="#29b2fe" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+  <br>
+  <h2 class="post-title">Exploring Views in SwiftUI</h2>
+  <time datetime="2024-05-02T00:00:00+05:00" class="post-date">02 May 2024</time>
+  <p>In SwiftUI, <strong>Views</strong> are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences.</p>
+
+<h2 id="what-are-views">What are Views?</h2>
+
+<p>In the context of SwiftUI, a <strong>View</strong> is a protocol that defines the structure and behavior of a UI element. Views can be anything from a basic text label (<code class="language-plaintext highlighter-rouge">Text</code>) to a more complex layout composed of multiple subviews. Views are composable, meaning you can combine them together to create more sophisticated interfaces.</p>
+
+<h2 id="creating-views">Creating Views</h2>
+
+<p>Creating a simple view in SwiftUI is straightforward. Let’s start with a basic example:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Text</span><span class="p">(</span><span class="s">"Hello, SwiftUI!"</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="/cwu/public/1-swiftui-views.jpg" alt="1" /></p>
+
+<p>In this example, we’ve created a <code class="language-plaintext highlighter-rouge">Text</code> view that displays the text “Hello, SwiftUI!” with a title font and blue color. SwiftUI provides a rich set of modifiers, such as <code class="language-plaintext highlighter-rouge">.font()</code> and <code class="language-plaintext highlighter-rouge">.foregroundColor()</code>, to customize the appearance of views.</p>
+
+<h2 id="composing-views">Composing Views</h2>
+
+<p>One of the strengths of SwiftUI is its composability. You can easily compose multiple views together to create more complex interfaces. Here’s an example of composing views using stacks:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Welcome to"</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"SwiftUI"</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">largeTitle</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">fontWeight</span><span class="p">(</span><span class="o">.</span><span class="n">bold</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="/cwu/public/2-swiftui-views.jpg" alt="1" /></p>
+
+<p>In this example, we’ve used a <code class="language-plaintext highlighter-rouge">VStack</code> to stack two <code class="language-plaintext highlighter-rouge">Text</code> views vertically. This results in a UI where the second text appears below the first text, creating a visually pleasing layout.</p>
+
+<h2 id="modifying-views">Modifying Views</h2>
+
+<p>SwiftUI provides a wide range of modifiers that you can use to modify the appearance and behavior of views. Let’s add a button to our previous example and apply some modifiers to it:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Welcome to SwiftUI"</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="nv">action</span><span class="p">:</span> <span class="p">{</span>
+                <span class="c1">// Action to be performed when the button is tapped</span>
+            <span class="p">})</span> <span class="p">{</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"Get Started"</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">fontWeight</span><span class="p">(</span><span class="o">.</span><span class="n">bold</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">padding</span><span class="p">()</span>
+                    <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">cornerRadius</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="/cwu/public/3-swiftui-views.jpg" alt="1" /></p>
+
+<p>In this example, we’ve added a <code class="language-plaintext highlighter-rouge">Button</code> view with a closure that defines the action to be performed when the button is tapped. We’ve also applied various modifiers to customize the appearance of the button, such as setting the background color, text color, and corner radius.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Views are the building blocks of SwiftUI, allowing you to create dynamic and interactive user interfaces with ease. By understanding how to create, compose, and modify views, you can unleash the full power of SwiftUI to design beautiful and intuitive apps.</p>
+
+<p>To learn more about Views and other SwiftUI concepts, check out the <a href="https://developer.apple.com/documentation/swiftui">official documentation</a> provided by Apple.</p>
+
+  <section class="help-section">
+    <div class="shadow-image"></div>
+    <div class="content-wrapper">
+        <h2 style="color: #fff;">Together, we can innovate</h2>
+        <div class="actions">
+            <a href="https://www.linkedin.com/in/usman-saeed-9774997b" class="action-link"
+                style="background-color: #0969da;">
+                <svg fill="#fff" viewBox="0 0 310 310" height="28px" width="28px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="XMLID_801_">
+                        <path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+                      C77.16,101.969,74.922,99.73,72.16,99.73z" />
+                        <path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+                      c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z" />
+                        <path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+                      c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+                      c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+                      C310,145.43,300.549,94.761,230.454,94.761z" />
+                    </g>
+                </svg>
+            </a>
+
+            <a href="https://www.upwork.com/freelancers/~01c392492536637a7f" class="action-link"
+                style="background-color: #14a800;">
+                <svg height="28" viewBox=".26 -.21 500 500" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m359.92 303.51c-31.11 0-51.69-24.01-57.45-33.35 7.36-59.01 28.93-77.61 57.45-77.61 28.18 0 50.13 22.53 50.13 55.48s-21.95 55.48-50.13 55.48m0-147.18c-50.71 0-79.13 33.07-87.25 67.12-9.24-17.34-16.04-40.54-21.4-62.1h-70.09v87.24c0 31.7-14.38 55.07-42.59 55.07s-44.37-23.37-44.37-55.06l.3-87.25h-40.4v87.24c0 25.47 8.26 48.56 23.26 65.04 15.48 16.98 36.64 25.95 61.19 25.95 48.78 0 82.81-37.41 82.81-90.96v-58.62c5.14 19.29 17.2 56.39 40.41 88.92l-21.68 123.44h41.08l14.31-87.52c4.7 3.89 9.68 7.41 14.9 10.55a90.604 90.604 0 0 0 45.69 14.09h.08c1.21 0 2.44.07 3.69.07 50.29 0 90.34-38.94 90.34-91.43.01-52.52-40-91.79-90.28-91.79"
+                        fill='#fff' />
+                </svg>
+            </a>
+
+            <a href="https://www.freelancer.com/u/itsusmansaeed" class="action-link" style="background-color: #fff;">
+                <svg viewBox="-0.23 0 97.266 72.333" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                    <path
+                        d="M56.897 0l6.624 9.29L97.036 0M22.075 72.333l18.13-17.725-10.912-11.71M54.152 0l-9.69 8.738 16.298.608M16.482 0l3.48 7.133 19.18 1.195M26.75 36.986l14.17-26.434L-.23 8.328M28.4 38.662L41.785 53.04 56.55 38.567l4.582-26.957-17.993-.918"
+                        fill="#29b2fe" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+</article>
+
+
+
+<aside class="related">
+  <h4>Recent posts</h4>
+  <ul class="related-posts">
+
+    
+      <li>
+        <a title="Elevate Your SwiftUI User Interface with Modifiers" href="/cwu/2024/05/03/exploring-modifiers-in-swiftui/">
+          Elevate Your SwiftUI User Interface with Modifiers
+          <small><time datetime="2024-05-03T00:00:00+05:00">03 May 2024</time></small>
+        </a>
+      </li>
+    
+    
+  </ul>
+</aside>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <a href="https://m-usmansaeed.github.io">
+        <img class="avatar" alt="m-usmansaeed" width="100" height="100" data-proofer-ignore="true" src="https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=100" srcset="https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=100 1x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=200 2x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=300 3x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=400 4x" />
+      </a>
+
+      <small>Hi there! My name is Usman.</small>
+      Usman Saeed &copy; <time datetime="2024-05-03T17:55:25+05:00">2024</time>. All rights reserved.
+      </small>
+    </footer>
+  </div>
+  <div style="height: 20px;"></div>
+</body>
+
+</html>
