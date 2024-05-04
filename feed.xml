@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-03T17:55:25+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Elevate Your SwiftUI User Interface with Modifiers</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/" rel="alternate" type="text/html" title="Elevate Your SwiftUI User Interface with Modifiers" /><published>2024-05-03T00:00:00+05:00</published><updated>2024-05-03T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/"><![CDATA[<p>Welcome to the world of SwiftUI modifiers, where you can transform and style your user interface with elegance and simplicity. Modifiers are powerful tools that allow you to customize the appearance and behavior of views in SwiftUI. In this article, we’ll explore the magic of modifiers and how you can use them creatively to enhance your app’s user experience.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-04T12:05:57+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Elevate Your SwiftUI User Interface with Modifiers</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/" rel="alternate" type="text/html" title="Elevate Your SwiftUI User Interface with Modifiers" /><published>2024-05-03T00:00:00+05:00</published><updated>2024-05-03T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/"><![CDATA[<p>Welcome to the world of SwiftUI modifiers, where you can transform and style your user interface with elegance and simplicity. Modifiers are powerful tools that allow you to customize the appearance and behavior of views in SwiftUI. In this article, we’ll explore the magic of modifiers and how you can use them creatively to enhance your app’s user experience.</p>
 
 <h2 id="what-are-modifiers">What are Modifiers?</h2>
 
@@ -126,7 +126,7 @@
   </tbody>
 </table>
 
-<p>This table provides a clear overview of each action related to buttons and their corresponding documentation links.</p>
+<p>This table neatly organizes each action alongside its corresponding documentation link.</p>
 
 <h3 id="dynamic-layout-with-stacks-and-spacers">Dynamic Layout with Stacks and Spacers</h3>
 
@@ -204,7 +204,7 @@
   </tbody>
 </table>
 
-<p>This table provides a clear overview of each action related to VStacks and their corresponding documentation links.</p>
+<p>This table neatly organizes each action alongside its corresponding documentation link.</p>
 
 <p>Let’s explore some additional unique examples of SwiftUI modifiers:</p>
 
