@@ -1,4 +1,216 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-04T12:05:57+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Elevate Your SwiftUI User Interface with Modifiers</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/" rel="alternate" type="text/html" title="Elevate Your SwiftUI User Interface with Modifiers" /><published>2024-05-03T00:00:00+05:00</published><updated>2024-05-03T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/"><![CDATA[<p>Welcome to the world of SwiftUI modifiers, where you can transform and style your user interface with elegance and simplicity. Modifiers are powerful tools that allow you to customize the appearance and behavior of views in SwiftUI. In this article, we’ll explore the magic of modifiers and how you can use them creatively to enhance your app’s user experience.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-05T01:44:02+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">State Management in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui/" rel="alternate" type="text/html" title="State Management in SwiftUI" /><published>2024-05-05T00:00:00+05:00</published><updated>2024-05-05T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui/"><![CDATA[<p>State management is crucial in SwiftUI for building responsive and dynamic user interfaces. SwiftUI provides various property wrappers and techniques to handle state effectively, enabling you to create interactive applications.</p>
+
+<h2 id="state">@State</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@State</code> property wrapper is fundamental for managing the state of a view. It allows a view to maintain and modify its internal state, triggering updates to the view whenever the state changes.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">count</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Count: </span><span class="se">\(</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="s">"Increment"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@State</code> is used to declare a property called <code class="language-plaintext highlighter-rouge">count</code>, which represents the number of times a button is tapped. Whenever the button is tapped, the <code class="language-plaintext highlighter-rouge">count</code> is incremented, and SwiftUI automatically updates the view to reflect the new count value.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/state">@State</a></p>
+
+<h2 id="binding">@Binding</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@Binding</code> property wrapper establishes a two-way connection between a parent and a child view. It enables a child view to access and modify a value owned by its parent.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">DetailView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@Binding</span> <span class="k">var</span> <span class="nv">isPresented</span><span class="p">:</span> <span class="kt">Bool</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Button</span><span class="p">(</span><span class="s">"Dismiss"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">isPresented</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">showModal</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Button</span><span class="p">(</span><span class="s">"Show Detail"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">showModal</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">sheet</span><span class="p">(</span><span class="nv">isPresented</span><span class="p">:</span> <span class="err">$</span><span class="n">showModal</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">DetailView</span><span class="p">(</span><span class="nv">isPresented</span><span class="p">:</span> <span class="err">$</span><span class="n">showModal</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@Binding</code> is used to pass the <code class="language-plaintext highlighter-rouge">showModal</code> state from the parent view (<code class="language-plaintext highlighter-rouge">ContentView</code>) to the child view (<code class="language-plaintext highlighter-rouge">DetailView</code>). When the “Dismiss” button is tapped in the <code class="language-plaintext highlighter-rouge">DetailView</code>, it updates the <code class="language-plaintext highlighter-rouge">showModal</code> state in the <code class="language-plaintext highlighter-rouge">ContentView</code>, closing the modal sheet.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/binding">@Binding</a></p>
+
+<h2 id="observableobject-and-observedobject">ObservableObject and @ObservedObject</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">ObservableObject</code> protocol, combined with <code class="language-plaintext highlighter-rouge">@ObservedObject</code>, enables reactive data management in SwiftUI. It allows views to observe and react to changes in an object’s state.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">class</span> <span class="kt">UserData</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">username</span> <span class="o">=</span> <span class="s">"JohnDoe"</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@ObservedObject</span> <span class="k">var</span> <span class="nv">userData</span> <span class="o">=</span> <span class="kt">UserData</span><span class="p">()</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Welcome, </span><span class="se">\(</span><span class="n">userData</span><span class="o">.</span><span class="n">username</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+            <span class="kt">TextField</span><span class="p">(</span><span class="s">"Enter your name"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="err">$</span><span class="n">userData</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">UserData</code> is an observable object with a published property called <code class="language-plaintext highlighter-rouge">username</code>. The <code class="language-plaintext highlighter-rouge">ContentView</code> observes changes to the <code class="language-plaintext highlighter-rouge">userData</code> object using <code class="language-plaintext highlighter-rouge">@ObservedObject</code>. Whenever the <code class="language-plaintext highlighter-rouge">username</code> changes, SwiftUI automatically updates the view to reflect the new value.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/combine/observableobject">@ObservableObject</a> and <a href="https://developer.apple.com/documentation/swiftui/observedobject">ObservedObject</a></p>
+
+<h2 id="environmentobject">@EnvironmentObject</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@EnvironmentObject</code> property wrapper facilitates sharing data across multiple views within a SwiftUI app. It allows for a centralized data store that can be accessed and modified by any view in the view hierarchy.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">class</span> <span class="kt">UserData</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">isLoggedIn</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@EnvironmentObject</span> <span class="k">var</span> <span class="nv">userData</span><span class="p">:</span> <span class="kt">UserData</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">userData</span><span class="o">.</span><span class="n">isLoggedIn</span> <span class="p">{</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"Welcome!"</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="kt">Button</span><span class="p">(</span><span class="s">"Log In"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">userData</span><span class="o">.</span><span class="n">isLoggedIn</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">AppView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">ContentView</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">environmentObject</span><span class="p">(</span><span class="kt">UserData</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">UserData</code> is an observable object with a published property called <code class="language-plaintext highlighter-rouge">isLoggedIn</code>. The <code class="language-plaintext highlighter-rouge">userData</code> object is injected into the environment using <code class="language-plaintext highlighter-rouge">@EnvironmentObject</code>. Any changes to <code class="language-plaintext highlighter-rouge">isLoggedIn</code> in any view will automatically update all views that observe the <code class="language-plaintext highlighter-rouge">userData</code> object.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/environmentobject">@EnvironmentObject</a></p>
+
+<h2 id="stateobject">@StateObject</h2>
+
+<p>Introduced in iOS 14, the <code class="language-plaintext highlighter-rouge">@StateObject</code> property wrapper is used for managing the lifecycle of an observable object within a view. It ensures that the object is instantiated only once during the view’s lifetime.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">class</span> <span class="kt">DataProvider</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Initial Data"</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@StateObject</span> <span class="k">var</span> <span class="nv">dataProvider</span> <span class="o">=</span> <span class="kt">DataProvider</span><span class="p">()</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Text</span><span class="p">(</span><span class="n">dataProvider</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">onTapGesture</span> <span class="p">{</span>
+                <span class="n">dataProvider</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"Updated Data"</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@StateObject</code> is used to create an instance of <code class="language-plaintext highlighter-rouge">DataProvider</code> within the <code class="language-plaintext highlighter-rouge">ContentView</code>. The <code class="language-plaintext highlighter-rouge">DataProvider</code> object is automatically instantiated and managed by SwiftUI. Any changes to the <code class="language-plaintext highlighter-rouge">dataProvider</code> object will automatically update the view.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/stateobject">@StateObject</a></p>
+
+<h2 id="environment">@Environment</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@Environment</code> property wrapper allows accessing values stored in the environment of a view, such as the color scheme, locale, or size category.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@Environment</span><span class="p">(\</span><span class="o">.</span><span class="n">colorScheme</span><span class="p">)</span> <span class="k">var</span> <span class="nv">colorScheme</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Text</span><span class="p">(</span><span class="s">"Current Color Scheme: </span><span class="se">\(</span><span class="n">colorScheme</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@Environment</code> is used to access the color scheme environment value. The text dynamically updates based on the current color scheme (light or dark) of the app.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/environment">@Environment</a></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>SwiftUI offers a rich set of property wrappers and techniques for managing state within your app. By leveraging <code class="language-plaintext highlighter-rouge">@State</code>, <code class="language-plaintext highlighter-rouge">@Binding</code>, <code class="language-plaintext highlighter-rouge">ObservableObject</code>, <code class="language-plaintext highlighter-rouge">@EnvironmentObject</code>, <code class="language-plaintext highlighter-rouge">@StateObject</code>, and <code class="language-plaintext highlighter-rouge">@Environment</code>, you can create highly responsive and interactive user interfaces.</p>
+
+<hr />
+
+<h3 id="state-management-property-wrapper-quick-reference">State Management Property Wrapper Quick Reference</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property Wrapper</th>
+      <th>Documentation Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@State</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/state">State</a></td>
+    </tr>
+    <tr>
+      <td>@Binding</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/binding">Binding</a></td>
+    </tr>
+    <tr>
+      <td>@ObservedObject</td>
+      <td><a href="https://developer.apple.com/documentation/combine/observableobject">ObservableObject</a></td>
+    </tr>
+    <tr>
+      <td>@EnvironmentObject</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/environmentobject">EnvironmentObject</a></td>
+    </tr>
+    <tr>
+      <td>@StateObject</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/stateobject">StateObject</a></td>
+    </tr>
+    <tr>
+      <td>@Environment</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/environment">Environment</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>This comprehensive guide covers various state management techniques in SwiftUI, providing you with the knowledge and tools to build robust and reactive applications. For more in-depth information, refer to the official documentation provided for each property wrapper.</p>]]></content><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><category term="SwiftUI" /><summary type="html"><![CDATA[State management is crucial in SwiftUI for building responsive and dynamic user interfaces. SwiftUI provides various property wrappers and techniques to handle state effectively, enabling you to create interactive applications.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://m-usmansaeed.github.io/cwu/cwu/public/1-modifiers.jpg" /><media:content medium="image" url="https://m-usmansaeed.github.io/cwu/cwu/public/1-modifiers.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Elevate Your SwiftUI User Interface with Modifiers</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/" rel="alternate" type="text/html" title="Elevate Your SwiftUI User Interface with Modifiers" /><published>2024-05-03T00:00:00+05:00</published><updated>2024-05-03T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/03/exploring-modifiers-in-swiftui/"><![CDATA[<p>Welcome to the world of SwiftUI modifiers, where you can transform and style your user interface with elegance and simplicity. Modifiers are powerful tools that allow you to customize the appearance and behavior of views in SwiftUI. In this article, we’ll explore the magic of modifiers and how you can use them creatively to enhance your app’s user experience.</p>
 
 <h2 id="what-are-modifiers">What are Modifiers?</h2>
 

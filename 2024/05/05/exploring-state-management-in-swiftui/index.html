@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=[?]">
+  </script>
+  
+  <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', '[?]');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="swift ios development apple watch iphone ipad swiftui macos uikit dev wwdc tutorial guide redux tea state container" />
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>State Management in SwiftUI | Code with Usman</title>
+<meta name="generator" content="Jekyll v3.9.5" />
+<meta property="og:title" content="State Management in SwiftUI" />
+<meta name="author" content="Usman Saeed" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="State management is crucial in SwiftUI for building responsive and dynamic user interfaces. SwiftUI provides various property wrappers and techniques to handle state effectively, enabling you to create interactive applications." />
+<meta property="og:description" content="State management is crucial in SwiftUI for building responsive and dynamic user interfaces. SwiftUI provides various property wrappers and techniques to handle state effectively, enabling you to create interactive applications." />
+<link rel="canonical" href="https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui/" />
+<meta property="og:url" content="https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui/" />
+<meta property="og:site_name" content="Code with Usman" />
+<meta property="og:image" content="https://m-usmansaeed.github.io/cwu/cwu/public/1-modifiers.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-05-05T00:00:00+05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://m-usmansaeed.github.io/cwu/cwu/public/1-modifiers.jpg" />
+<meta property="twitter:title" content="State Management in SwiftUI" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Usman Saeed","url":"https://twitter.com/"},"dateModified":"2024-05-05T00:00:00+05:00","datePublished":"2024-05-05T00:00:00+05:00","description":"State management is crucial in SwiftUI for building responsive and dynamic user interfaces. SwiftUI provides various property wrappers and techniques to handle state effectively, enabling you to create interactive applications.","headline":"State Management in SwiftUI","image":"https://m-usmansaeed.github.io/cwu/cwu/public/1-modifiers.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui/"},"url":"https://m-usmansaeed.github.io/cwu/2024/05/05/exploring-state-management-in-swiftui/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link rel="me" href="_https://me/@mysocialaccount">
+  <link rel="stylesheet" href="/cwu/styles.css">
+  <link rel="shortcut icon" href="/cwu/public/favicon.ico">
+  <link rel="alternate" type="application/atom+xml" title="Code with Usman" href="/cwu/feed.xml">
+</head>
+
+
+<body>
+
+  <header class="masthead">
+
+    <script src="/cwu/scripts/toggle.js"></script>
+
+    <nav>
+
+      <div class="links">
+        <div style="display: flex; align-items: center; justify-content: center;">
+          <h1 class="masthead-title">
+            <a href="/cwu/" title="Home">
+              Code with Usman
+            </a>
+          </h1>
+
+          <a href="/cwu/categories" title="Categories">Categories</a>
+          <a href="/cwu/archive" title="Archive">Archive</a>
+        </div>
+
+        <div style="flex: 0; padding-right: 10px;">
+          <div class="tdnn">
+            <div class="moon"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <div style="height: 120px;"></div>
+
+  <div style="display: flex; flex-direction: column; min-height: 100vh;">
+
+  <div class="container content">
+
+    <main>
+      <div>
+        <article class="post">
+  <section class="help-section">
+    <div class="shadow-image"></div>
+    <div class="content-wrapper">
+        <h2 style="color: #fff;">Together, we can innovate</h2>
+        <div class="actions">
+            <a href="https://www.linkedin.com/in/usman-saeed-9774997b" class="action-link"
+                style="background-color: #0969da;">
+                <svg fill="#fff" viewBox="0 0 310 310" height="28px" width="28px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="XMLID_801_">
+                        <path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+                      C77.16,101.969,74.922,99.73,72.16,99.73z" />
+                        <path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+                      c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z" />
+                        <path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+                      c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+                      c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+                      C310,145.43,300.549,94.761,230.454,94.761z" />
+                    </g>
+                </svg>
+            </a>
+
+            <a href="https://www.upwork.com/freelancers/~01c392492536637a7f" class="action-link"
+                style="background-color: #14a800;">
+                <svg height="28" viewBox=".26 -.21 500 500" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m359.92 303.51c-31.11 0-51.69-24.01-57.45-33.35 7.36-59.01 28.93-77.61 57.45-77.61 28.18 0 50.13 22.53 50.13 55.48s-21.95 55.48-50.13 55.48m0-147.18c-50.71 0-79.13 33.07-87.25 67.12-9.24-17.34-16.04-40.54-21.4-62.1h-70.09v87.24c0 31.7-14.38 55.07-42.59 55.07s-44.37-23.37-44.37-55.06l.3-87.25h-40.4v87.24c0 25.47 8.26 48.56 23.26 65.04 15.48 16.98 36.64 25.95 61.19 25.95 48.78 0 82.81-37.41 82.81-90.96v-58.62c5.14 19.29 17.2 56.39 40.41 88.92l-21.68 123.44h41.08l14.31-87.52c4.7 3.89 9.68 7.41 14.9 10.55a90.604 90.604 0 0 0 45.69 14.09h.08c1.21 0 2.44.07 3.69.07 50.29 0 90.34-38.94 90.34-91.43.01-52.52-40-91.79-90.28-91.79"
+                        fill='#fff' />
+                </svg>
+            </a>
+
+            <a href="https://www.freelancer.com/u/itsusmansaeed" class="action-link" style="background-color: #fff;">
+                <svg viewBox="-0.23 0 97.266 72.333" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                    <path
+                        d="M56.897 0l6.624 9.29L97.036 0M22.075 72.333l18.13-17.725-10.912-11.71M54.152 0l-9.69 8.738 16.298.608M16.482 0l3.48 7.133 19.18 1.195M26.75 36.986l14.17-26.434L-.23 8.328M28.4 38.662L41.785 53.04 56.55 38.567l4.582-26.957-17.993-.918"
+                        fill="#29b2fe" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+  <br>
+  <h2 class="post-title">State Management in SwiftUI</h2>
+  <time datetime="2024-05-05T00:00:00+05:00" class="post-date">05 May 2024</time>
+  <p>State management is crucial in SwiftUI for building responsive and dynamic user interfaces. SwiftUI provides various property wrappers and techniques to handle state effectively, enabling you to create interactive applications.</p>
+
+<h2 id="state">@State</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@State</code> property wrapper is fundamental for managing the state of a view. It allows a view to maintain and modify its internal state, triggering updates to the view whenever the state changes.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">count</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Count: </span><span class="se">\(</span><span class="n">count</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="s">"Increment"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@State</code> is used to declare a property called <code class="language-plaintext highlighter-rouge">count</code>, which represents the number of times a button is tapped. Whenever the button is tapped, the <code class="language-plaintext highlighter-rouge">count</code> is incremented, and SwiftUI automatically updates the view to reflect the new count value.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/state">@State</a></p>
+
+<h2 id="binding">@Binding</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@Binding</code> property wrapper establishes a two-way connection between a parent and a child view. It enables a child view to access and modify a value owned by its parent.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">DetailView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@Binding</span> <span class="k">var</span> <span class="nv">isPresented</span><span class="p">:</span> <span class="kt">Bool</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Button</span><span class="p">(</span><span class="s">"Dismiss"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">isPresented</span> <span class="o">=</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">showModal</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Button</span><span class="p">(</span><span class="s">"Show Detail"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">showModal</span> <span class="o">=</span> <span class="kc">true</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">sheet</span><span class="p">(</span><span class="nv">isPresented</span><span class="p">:</span> <span class="err">$</span><span class="n">showModal</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">DetailView</span><span class="p">(</span><span class="nv">isPresented</span><span class="p">:</span> <span class="err">$</span><span class="n">showModal</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@Binding</code> is used to pass the <code class="language-plaintext highlighter-rouge">showModal</code> state from the parent view (<code class="language-plaintext highlighter-rouge">ContentView</code>) to the child view (<code class="language-plaintext highlighter-rouge">DetailView</code>). When the “Dismiss” button is tapped in the <code class="language-plaintext highlighter-rouge">DetailView</code>, it updates the <code class="language-plaintext highlighter-rouge">showModal</code> state in the <code class="language-plaintext highlighter-rouge">ContentView</code>, closing the modal sheet.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/binding">@Binding</a></p>
+
+<h2 id="observableobject-and-observedobject">ObservableObject and @ObservedObject</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">ObservableObject</code> protocol, combined with <code class="language-plaintext highlighter-rouge">@ObservedObject</code>, enables reactive data management in SwiftUI. It allows views to observe and react to changes in an object’s state.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">class</span> <span class="kt">UserData</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">username</span> <span class="o">=</span> <span class="s">"JohnDoe"</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@ObservedObject</span> <span class="k">var</span> <span class="nv">userData</span> <span class="o">=</span> <span class="kt">UserData</span><span class="p">()</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Welcome, </span><span class="se">\(</span><span class="n">userData</span><span class="o">.</span><span class="n">username</span><span class="se">)</span><span class="s">!"</span><span class="p">)</span>
+            <span class="kt">TextField</span><span class="p">(</span><span class="s">"Enter your name"</span><span class="p">,</span> <span class="nv">text</span><span class="p">:</span> <span class="err">$</span><span class="n">userData</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">UserData</code> is an observable object with a published property called <code class="language-plaintext highlighter-rouge">username</code>. The <code class="language-plaintext highlighter-rouge">ContentView</code> observes changes to the <code class="language-plaintext highlighter-rouge">userData</code> object using <code class="language-plaintext highlighter-rouge">@ObservedObject</code>. Whenever the <code class="language-plaintext highlighter-rouge">username</code> changes, SwiftUI automatically updates the view to reflect the new value.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/combine/observableobject">@ObservableObject</a> and <a href="https://developer.apple.com/documentation/swiftui/observedobject">ObservedObject</a></p>
+
+<h2 id="environmentobject">@EnvironmentObject</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@EnvironmentObject</code> property wrapper facilitates sharing data across multiple views within a SwiftUI app. It allows for a centralized data store that can be accessed and modified by any view in the view hierarchy.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">class</span> <span class="kt">UserData</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">isLoggedIn</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@EnvironmentObject</span> <span class="k">var</span> <span class="nv">userData</span><span class="p">:</span> <span class="kt">UserData</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">userData</span><span class="o">.</span><span class="n">isLoggedIn</span> <span class="p">{</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"Welcome!"</span><span class="p">)</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="kt">Button</span><span class="p">(</span><span class="s">"Log In"</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">userData</span><span class="o">.</span><span class="n">isLoggedIn</span> <span class="o">=</span> <span class="kc">true</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">AppView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">ContentView</span><span class="p">()</span>
+            <span class="o">.</span><span class="nf">environmentObject</span><span class="p">(</span><span class="kt">UserData</span><span class="p">())</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">UserData</code> is an observable object with a published property called <code class="language-plaintext highlighter-rouge">isLoggedIn</code>. The <code class="language-plaintext highlighter-rouge">userData</code> object is injected into the environment using <code class="language-plaintext highlighter-rouge">@EnvironmentObject</code>. Any changes to <code class="language-plaintext highlighter-rouge">isLoggedIn</code> in any view will automatically update all views that observe the <code class="language-plaintext highlighter-rouge">userData</code> object.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/environmentobject">@EnvironmentObject</a></p>
+
+<h2 id="stateobject">@StateObject</h2>
+
+<p>Introduced in iOS 14, the <code class="language-plaintext highlighter-rouge">@StateObject</code> property wrapper is used for managing the lifecycle of an observable object within a view. It ensures that the object is instantiated only once during the view’s lifetime.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">class</span> <span class="kt">DataProvider</span><span class="p">:</span> <span class="kt">ObservableObject</span> <span class="p">{</span>
+    <span class="kd">@Published</span> <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="s">"Initial Data"</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@StateObject</span> <span class="k">var</span> <span class="nv">dataProvider</span> <span class="o">=</span> <span class="kt">DataProvider</span><span class="p">()</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Text</span><span class="p">(</span><span class="n">dataProvider</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">onTapGesture</span> <span class="p">{</span>
+                <span class="n">dataProvider</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"Updated Data"</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@StateObject</code> is used to create an instance of <code class="language-plaintext highlighter-rouge">DataProvider</code> within the <code class="language-plaintext highlighter-rouge">ContentView</code>. The <code class="language-plaintext highlighter-rouge">DataProvider</code> object is automatically instantiated and managed by SwiftUI. Any changes to the <code class="language-plaintext highlighter-rouge">dataProvider</code> object will automatically update the view.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/stateobject">@StateObject</a></p>
+
+<h2 id="environment">@Environment</h2>
+
+<p>The <code class="language-plaintext highlighter-rouge">@Environment</code> property wrapper allows accessing values stored in the environment of a view, such as the color scheme, locale, or size category.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
+
+<span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@Environment</span><span class="p">(\</span><span class="o">.</span><span class="n">colorScheme</span><span class="p">)</span> <span class="k">var</span> <span class="nv">colorScheme</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Text</span><span class="p">(</span><span class="s">"Current Color Scheme: </span><span class="se">\(</span><span class="n">colorScheme</span><span class="o">.</span><span class="n">description</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In this example, <code class="language-plaintext highlighter-rouge">@Environment</code> is used to access the color scheme environment value. The text dynamically updates based on the current color scheme (light or dark) of the app.</p>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/environment">@Environment</a></p>
+
+<h2 id="summary">Summary</h2>
+
+<p>SwiftUI offers a rich set of property wrappers and techniques for managing state within your app. By leveraging <code class="language-plaintext highlighter-rouge">@State</code>, <code class="language-plaintext highlighter-rouge">@Binding</code>, <code class="language-plaintext highlighter-rouge">ObservableObject</code>, <code class="language-plaintext highlighter-rouge">@EnvironmentObject</code>, <code class="language-plaintext highlighter-rouge">@StateObject</code>, and <code class="language-plaintext highlighter-rouge">@Environment</code>, you can create highly responsive and interactive user interfaces.</p>
+
+<hr />
+
+<h3 id="state-management-property-wrapper-quick-reference">State Management Property Wrapper Quick Reference</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Property Wrapper</th>
+      <th>Documentation Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@State</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/state">State</a></td>
+    </tr>
+    <tr>
+      <td>@Binding</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/binding">Binding</a></td>
+    </tr>
+    <tr>
+      <td>@ObservedObject</td>
+      <td><a href="https://developer.apple.com/documentation/combine/observableobject">ObservableObject</a></td>
+    </tr>
+    <tr>
+      <td>@EnvironmentObject</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/environmentobject">EnvironmentObject</a></td>
+    </tr>
+    <tr>
+      <td>@StateObject</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/stateobject">StateObject</a></td>
+    </tr>
+    <tr>
+      <td>@Environment</td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/environment">Environment</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>This comprehensive guide covers various state management techniques in SwiftUI, providing you with the knowledge and tools to build robust and reactive applications. For more in-depth information, refer to the official documentation provided for each property wrapper.</p>
+
+  <section class="help-section">
+    <div class="shadow-image"></div>
+    <div class="content-wrapper">
+        <h2 style="color: #fff;">Together, we can innovate</h2>
+        <div class="actions">
+            <a href="https://www.linkedin.com/in/usman-saeed-9774997b" class="action-link"
+                style="background-color: #0969da;">
+                <svg fill="#fff" viewBox="0 0 310 310" height="28px" width="28px" xmlns="http://www.w3.org/2000/svg">
+                    <g id="XMLID_801_">
+                        <path id="XMLID_802_" d="M72.16,99.73H9.927c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5H72.16c2.762,0,5-2.238,5-5V104.73
+                      C77.16,101.969,74.922,99.73,72.16,99.73z" />
+                        <path id="XMLID_803_" d="M41.066,0.341C18.422,0.341,0,18.743,0,41.362C0,63.991,18.422,82.4,41.066,82.4
+                      c22.626,0,41.033-18.41,41.033-41.038C82.1,18.743,63.692,0.341,41.066,0.341z" />
+                        <path id="XMLID_804_" d="M230.454,94.761c-24.995,0-43.472,10.745-54.679,22.954V104.73c0-2.761-2.238-5-5-5h-59.599
+                      c-2.762,0-5,2.239-5,5v199.928c0,2.762,2.238,5,5,5h62.097c2.762,0,5-2.238,5-5v-98.918c0-33.333,9.054-46.319,32.29-46.319
+                      c25.306,0,27.317,20.818,27.317,48.034v97.204c0,2.762,2.238,5,5,5H305c2.762,0,5-2.238,5-5V194.995
+                      C310,145.43,300.549,94.761,230.454,94.761z" />
+                    </g>
+                </svg>
+            </a>
+
+            <a href="https://www.upwork.com/freelancers/~01c392492536637a7f" class="action-link"
+                style="background-color: #14a800;">
+                <svg height="28" viewBox=".26 -.21 500 500" width="28" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m359.92 303.51c-31.11 0-51.69-24.01-57.45-33.35 7.36-59.01 28.93-77.61 57.45-77.61 28.18 0 50.13 22.53 50.13 55.48s-21.95 55.48-50.13 55.48m0-147.18c-50.71 0-79.13 33.07-87.25 67.12-9.24-17.34-16.04-40.54-21.4-62.1h-70.09v87.24c0 31.7-14.38 55.07-42.59 55.07s-44.37-23.37-44.37-55.06l.3-87.25h-40.4v87.24c0 25.47 8.26 48.56 23.26 65.04 15.48 16.98 36.64 25.95 61.19 25.95 48.78 0 82.81-37.41 82.81-90.96v-58.62c5.14 19.29 17.2 56.39 40.41 88.92l-21.68 123.44h41.08l14.31-87.52c4.7 3.89 9.68 7.41 14.9 10.55a90.604 90.604 0 0 0 45.69 14.09h.08c1.21 0 2.44.07 3.69.07 50.29 0 90.34-38.94 90.34-91.43.01-52.52-40-91.79-90.28-91.79"
+                        fill='#fff' />
+                </svg>
+            </a>
+
+            <a href="https://www.freelancer.com/u/itsusmansaeed" class="action-link" style="background-color: #fff;">
+                <svg viewBox="-0.23 0 97.266 72.333" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+                    <path
+                        d="M56.897 0l6.624 9.29L97.036 0M22.075 72.333l18.13-17.725-10.912-11.71M54.152 0l-9.69 8.738 16.298.608M16.482 0l3.48 7.133 19.18 1.195M26.75 36.986l14.17-26.434L-.23 8.328M28.4 38.662L41.785 53.04 56.55 38.567l4.582-26.957-17.993-.918"
+                        fill="#29b2fe" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+</article>
+
+
+
+<aside class="related">
+  <h4>Recent posts</h4>
+  <ul class="related-posts">
+
+    
+      <li>
+        <a title="Elevate Your SwiftUI User Interface with Modifiers" href="/cwu/2024/05/03/exploring-modifiers-in-swiftui/">
+          Elevate Your SwiftUI User Interface with Modifiers
+          <small><time datetime="2024-05-03T00:00:00+05:00">03 May 2024</time></small>
+        </a>
+      </li>
+    
+      <li>
+        <a title="Exploring Views in SwiftUI" href="/cwu/2024/05/02/exploring-views-in-swiftui/">
+          Exploring Views in SwiftUI
+          <small><time datetime="2024-05-02T00:00:00+05:00">02 May 2024</time></small>
+        </a>
+      </li>
+    
+    
+  </ul>
+</aside>
+
+
+      </div>
+    </main>
+
+    
+  </div>
+
+    <footer class="footer">
+      <a class="home" href="https://m-usmansaeed.github.io">
+        <img class="avatar" alt="m-usmansaeed" width="100" height="100" data-proofer-ignore="true" src="https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=100" srcset="https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=100 1x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=200 2x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=300 3x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=400 4x" />
+      </a>
+
+      <div class="copyright">
+        <!-- <small>Hi there! My name is Usman.</small> -->
+        <p>Usman Saeed &copy; <time datetime="2024-05-05T01:44:02+05:00">2024</time>. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+
+</html>
