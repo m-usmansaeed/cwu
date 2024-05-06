@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-06T23:18:56+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Layout and Stacks in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/" rel="alternate" type="text/html" title="Layout and Stacks in SwiftUI" /><published>2024-05-06T00:00:00+05:00</published><updated>2024-05-06T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/"><![CDATA[<p>In SwiftUI, layout is managed through the use of stacks—vertical (<code class="language-plaintext highlighter-rouge">VStack</code>) and horizontal (<code class="language-plaintext highlighter-rouge">HStack</code>)—which allow for flexible arrangement of views. Stacks simplify the process of organizing UI elements, making it easy to create complex layouts. Let’s explore how to utilize stacks effectively in SwiftUI.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-06T23:39:22+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Layout and Stacks in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/" rel="alternate" type="text/html" title="Layout and Stacks in SwiftUI" /><published>2024-05-06T00:00:00+05:00</published><updated>2024-05-06T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/"><![CDATA[<p>In SwiftUI, layout is managed through the use of stacks—vertical (<code class="language-plaintext highlighter-rouge">VStack</code>) and horizontal (<code class="language-plaintext highlighter-rouge">HStack</code>)—which allow for flexible arrangement of views. Stacks simplify the process of organizing UI elements, making it easy to create complex layouts. Let’s explore how to utilize stacks effectively in SwiftUI.</p>
 
 <h2 id="vstack-and-hstack">VStack and HStack</h2>
 
@@ -25,6 +25,8 @@
 <p><img src="/cwu/public/1-layout-and-stacks.jpg" alt="layout-and-stacks" />
 Read more about <a href="https://developer.apple.com/documentation/swiftui/vstack">VStack</a></p>
 
+<hr />
+
 <h3 id="hstack">HStack</h3>
 
 <p>The <code class="language-plaintext highlighter-rouge">HStack</code> stacks views horizontally, placing them in a row. This is ideal for arranging elements from left to right.</p>
@@ -47,6 +49,8 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/vstac
 <p><img src="/cwu/public/2-layout-and-stacks.jpg" alt="layout-and-stacks" />
 Read more about <a href="https://developer.apple.com/documentation/swiftui/hstack">HStack</a></p>
 
+<hr />
+
 <h2 id="zstack">ZStack</h2>
 
 <p>The <code class="language-plaintext highlighter-rouge">ZStack</code> stacks views on top of each other in a Z-axis arrangement, allowing for overlapping content.</p>
@@ -68,6 +72,8 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/hstac
 </code></pre></div></div>
 <p><img src="/cwu/public/3-layout-and-stacks.jpg" alt="layout-and-stacks" />
 Read more about <a href="https://developer.apple.com/documentation/swiftui/zstack">ZStack</a></p>
+
+<hr />
 
 <h2 id="using-spacer">Using Spacer</h2>
 
@@ -92,6 +98,8 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/zstac
 
 <p>Read more about <a href="https://developer.apple.com/documentation/swiftui/spacer">Spacer</a></p>
 
+<hr />
+
 <h2 id="nesting-stacks">Nesting Stacks</h2>
 
 <p>You can nest stacks to create more complex layouts. Here’s an example of combining <code class="language-plaintext highlighter-rouge">VStack</code> and <code class="language-plaintext highlighter-rouge">HStack</code>.</p>
@@ -99,7 +107,7 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/zstac
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">import</span> <span class="kt">SwiftUI</span>
 
 <span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
-<span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
         <span class="kt">VStack</span> <span class="p">{</span>
             <span class="kt">HStack</span> <span class="p">{</span>
                 <span class="kt">Text</span><span class="p">(</span><span class="s">"1"</span><span class="p">)</span>
@@ -107,8 +115,8 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/zstac
                     <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
                     <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
                     <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">purple</span><span class="p">)</span>
-
-                    
+                
+                
                 <span class="kt">Spacer</span><span class="p">()</span>
                 <span class="kt">Text</span><span class="p">(</span><span class="s">"2"</span><span class="p">)</span>
                     <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">largeTitle</span><span class="p">)</span>
@@ -123,8 +131,8 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/zstac
                     <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
                     <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
                     <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
-
-                    
+                
+                
                 <span class="kt">Spacer</span><span class="p">()</span>
                 <span class="kt">Text</span><span class="p">(</span><span class="s">"4"</span><span class="p">)</span>
                     <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">largeTitle</span><span class="p">)</span>
@@ -136,8 +144,13 @@ Read more about <a href="https://developer.apple.com/documentation/swiftui/zstac
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<p>Above example displays four text elements arranged in a 2x2 grid using <code class="language-plaintext highlighter-rouge">VStack</code> and <code class="language-plaintext highlighter-rouge">HStack</code> for vertical and horizontal alignment respectively. Each text element is styled with a large font size, white text color, and a background color. The elements are numbered from 1 to 4 and have different background colors (purple, pink, orange, and green). The <code class="language-plaintext highlighter-rouge">padding()</code> modifier adds padding around the entire content.</p>
+
 <p><img src="/cwu/public/4-layout-and-stacks.jpg" alt="layout-and-stacks" />
 Read more about <a href="https://developer.apple.com/documentation/swiftui/stack">Stacks</a></p>
+
+<hr />
 
 <h2 id="let-see-another-example-using-vstack">Let see another example using <code class="language-plaintext highlighter-rouge">VStack</code></h2>
 <p><br /></p>
