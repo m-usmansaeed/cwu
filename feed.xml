@@ -1,4 +1,188 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-06T23:39:22+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Layout and Stacks in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/" rel="alternate" type="text/html" title="Layout and Stacks in SwiftUI" /><published>2024-05-06T00:00:00+05:00</published><updated>2024-05-06T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/"><![CDATA[<p>In SwiftUI, layout is managed through the use of stacks—vertical (<code class="language-plaintext highlighter-rouge">VStack</code>) and horizontal (<code class="language-plaintext highlighter-rouge">HStack</code>)—which allow for flexible arrangement of views. Stacks simplify the process of organizing UI elements, making it easy to create complex layouts. Let’s explore how to utilize stacks effectively in SwiftUI.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-07T13:07:38+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Navigation in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui/" rel="alternate" type="text/html" title="Navigation in SwiftUI" /><published>2024-05-07T00:00:00+05:00</published><updated>2024-05-07T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui/"><![CDATA[<p>SwiftUI offers powerful tools for building intuitive navigation experiences within your iOS and iPadOS applications. This article explores various navigation techniques, providing code examples and explanations to guide you.</p>
+
+<p><strong>Navigation Concepts</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component Name</th>
+      <th>Description (Apple Documentation Link)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NavigationLink</code></td>
+      <td>Creates a link that pushes a new view onto the navigation stack. (<a href="https://developer.apple.com/documentation/swiftui/navigationlink">Apple Documentation</a>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NavigationStack</code></td>
+      <td>Manages the navigation stack, handling view hierarchy and transitions. (<a href="https://developer.apple.com/documentation/swiftui/navigationstack">Apple Documentation</a>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NavigationView</code></td>
+      <td>Provides a container view for the navigation bar and its content. (<a href="https://developer.apple.com/documentation/swiftui/navigationview">Apple Documentation</a>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">List</code></td>
+      <td>A versatile view for displaying scrollable lists with optional navigation to detail views. (<a href="https://developer.apple.com/documentation/swiftui/list">Apple Documentation</a>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DisclosureGroup</code></td>
+      <td>Creates a collapsible section that expands to reveal additional content or navigation options. (<a href="https://developer.apple.com/documentation/swiftui/disclosuregroup">Apple Documentation</a>)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Code Examples</strong></p>
+
+<p><strong>1. Basic NavigationLink:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">NavigationView</span> <span class="p">{</span>
+      <span class="kt">List</span> <span class="p">{</span>
+        <span class="kt">NavigationLink</span><span class="p">(</span><span class="nv">destination</span><span class="p">:</span> <span class="kt">Text</span><span class="p">(</span><span class="s">"Detail View"</span><span class="p">))</span> <span class="p">{</span>
+          <span class="kt">Text</span><span class="p">(</span><span class="s">"Go to Detail View"</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Main View"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">NavigationView</code> contains the <code class="language-plaintext highlighter-rouge">List</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">NavigationLink</code> within the list item pushes a new view (<code class="language-plaintext highlighter-rouge">Text("Detail View")</code>) onto the navigation stack when tapped.</li>
+  <li><code class="language-plaintext highlighter-rouge">navigationTitle</code> sets the title of the navigation bar.</li>
+</ul>
+
+<p><strong>2. Navigation with Labels:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">NavigationView</span> <span class="p">{</span>
+      <span class="kt">List</span> <span class="p">{</span>
+        <span class="kt">NavigationLink</span><span class="p">(</span><span class="nv">destination</span><span class="p">:</span> <span class="kt">Text</span><span class="p">(</span><span class="s">"Detail View"</span><span class="p">),</span> <span class="nv">label</span><span class="p">:</span> <span class="p">{</span>
+          <span class="kt">Text</span><span class="p">(</span><span class="s">"Show Details"</span><span class="p">)</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Main View"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+  <li>This example uses a separate label closure for <code class="language-plaintext highlighter-rouge">NavigationLink</code> to provide a more descriptive navigation target.</li>
+</ul>
+
+<p><strong>3. Navigation with Images:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">NavigationView</span> <span class="p">{</span>
+      <span class="kt">List</span> <span class="p">{</span>
+        <span class="kt">NavigationLink</span><span class="p">(</span><span class="nv">destination</span><span class="p">:</span> <span class="kt">Text</span><span class="p">(</span><span class="s">"Settings"</span><span class="p">),</span> <span class="nv">label</span><span class="p">:</span> <span class="p">{</span>
+          <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"gear"</span><span class="p">)</span>
+        <span class="p">})</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Main View"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+  <li>This example demonstrates using an icon (<code class="language-plaintext highlighter-rouge">Image(systemName: "gear")</code>) as the navigation link label.</li>
+</ul>
+
+<p><strong>4. List-Based Navigation:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">items</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Item 1"</span><span class="p">,</span> <span class="s">"Item 2"</span><span class="p">,</span> <span class="s">"Item 3"</span><span class="p">]</span>
+
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">NavigationView</span> <span class="p">{</span>
+      <span class="kt">List</span><span class="p">(</span><span class="n">items</span><span class="p">)</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+        <span class="kt">NavigationLink</span><span class="p">(</span><span class="nv">destination</span><span class="p">:</span> <span class="kt">Text</span><span class="p">(</span><span class="n">item</span><span class="p">))</span> <span class="p">{</span>
+          <span class="kt">Text</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Items List"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+  <li>Iterates through <code class="language-plaintext highlighter-rouge">items</code> to create dynamic list items with navigation to views displaying each item’s text.</li>
+</ul>
+
+<p><strong>5. DisclosureGroup for Nested Navigation:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">NavigationView</span> <span class="p">{</span>
+      <span class="kt">List</span> <span class="p">{</span>
+        <span class="kt">DisclosureGroup</span><span class="p">(</span><span class="nv">isExpanded</span><span class="p">:</span> <span class="o">.</span><span class="nf">constant</span><span class="p">(</span><span class="kc">false</span><span class="p">))</span> <span class="p">{</span>
+          <span class="kt">NavigationLink</span><span class="p">(</span><span class="nv">destination</span><span class="p">:</span> <span class="kt">Text</span><span class="p">(</span><span class="s">"Sub-Item 1"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Sub-Items"</span><span class="p">)</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">listItemText</span><span class="p">(</span><span class="s">"Main Item"</span><span class="p">)</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Main View"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+  <li>Uses <code class="language-plaintext highlighter-rouge">DisclosureGroup</code> to create a collapsible section with nested navigation (<code class="language-plaintext highlighter-rouge">NavigationLink</code>) to a sub-item view.</li>
+</ul>
+
+<p><strong>6. Navigation with Closures:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+
+  <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kt">NavigationView</span> <span class="p">{</span>
+      <span class="kt">Button</span><span class="p">(</span><span class="s">"Show Detail"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">NavigationLink</span> <span class="p">{</span>
+          <span class="kt">Text</span><span class="p">(</span><span class="s">"Detail View"</span><span class="p">)</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+      <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Main View"</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>Explanation:</strong></p>
+
+<ul>
+  <li>Employs a button with a closure-based <code class="language-plaintext highlighter-rouge">NavigationLink</code> for more</li>
+</ul>
+
+<p><strong>A World of Navigation Possibilities</strong></p>
+
+<p>Navigation is a fundamental building block for creating user-friendly and engaging app experiences. With SwiftUI’s intuitive tools and the concepts explored in this article, you’re well on your way to crafting seamless navigation flows in your projects. Don’t hesitate to experiment and explore further. Explore Apple’s documentation for even more advanced navigation techniques like programmatic navigation and custom transitions. The possibilities are vast, so dive in and start building!</p>]]></content><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><category term="SwiftUI" /><summary type="html"><![CDATA[SwiftUI offers powerful tools for building intuitive navigation experiences within your iOS and iPadOS applications. This article explores various navigation techniques, providing code examples and explanations to guide you.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://m-usmansaeed.github.io/cwu/cwu/public/" /><media:content medium="image" url="https://m-usmansaeed.github.io/cwu/cwu/public/" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Layout and Stacks in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/" rel="alternate" type="text/html" title="Layout and Stacks in SwiftUI" /><published>2024-05-06T00:00:00+05:00</published><updated>2024-05-06T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/06/layout-and-stacks-in-swiftui/"><![CDATA[<p>In SwiftUI, layout is managed through the use of stacks—vertical (<code class="language-plaintext highlighter-rouge">VStack</code>) and horizontal (<code class="language-plaintext highlighter-rouge">HStack</code>)—which allow for flexible arrangement of views. Stacks simplify the process of organizing UI elements, making it easy to create complex layouts. Let’s explore how to utilize stacks effectively in SwiftUI.</p>
 
 <h2 id="vstack-and-hstack">VStack and HStack</h2>
 
@@ -185,19 +369,19 @@ Photo by <a href="https://unsplash.com/@williamtm?utm_content=creditCopyText&amp
   </thead>
   <tbody>
     <tr>
-      <td>VStack</td>
+      <td><code class="language-plaintext highlighter-rouge">VStack</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/vstack">VStack</a></td>
     </tr>
     <tr>
-      <td>HStack</td>
+      <td><code class="language-plaintext highlighter-rouge">HStack</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/hstack">HStack</a></td>
     </tr>
     <tr>
-      <td>ZStack</td>
+      <td><code class="language-plaintext highlighter-rouge">ZStack</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/zstack">ZStack</a></td>
     </tr>
     <tr>
-      <td>Spacer</td>
+      <td><code class="language-plaintext highlighter-rouge">Spacer</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/spacer">Spacer</a></td>
     </tr>
   </tbody>
@@ -391,27 +575,27 @@ Photo by <a href="https://unsplash.com/@williamtm?utm_content=creditCopyText&amp
   </thead>
   <tbody>
     <tr>
-      <td>@State</td>
+      <td><code class="language-plaintext highlighter-rouge">@State</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/state">State</a></td>
     </tr>
     <tr>
-      <td>@Binding</td>
+      <td><code class="language-plaintext highlighter-rouge">@Binding</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/binding">Binding</a></td>
     </tr>
     <tr>
-      <td>@ObservedObject</td>
+      <td><code class="language-plaintext highlighter-rouge">@ObservedObject</code></td>
       <td><a href="https://developer.apple.com/documentation/combine/observableobject">ObservableObject</a></td>
     </tr>
     <tr>
-      <td>@EnvironmentObject</td>
+      <td><code class="language-plaintext highlighter-rouge">@EnvironmentObject</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/environmentobject">EnvironmentObject</a></td>
     </tr>
     <tr>
-      <td>@StateObject</td>
+      <td><code class="language-plaintext highlighter-rouge">@StateObject</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/stateobject">StateObject</a></td>
     </tr>
     <tr>
-      <td>@Environment</td>
+      <td><code class="language-plaintext highlighter-rouge">@Environment</code></td>
       <td><a href="https://developer.apple.com/documentation/swiftui/environment">Environment</a></td>
     </tr>
   </tbody>
