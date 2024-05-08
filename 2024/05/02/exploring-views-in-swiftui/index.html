@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <script src="/cwu/scripts/toggle.js"></script>
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=[?]">
   </script>
   
@@ -24,17 +25,17 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences." />
 <meta property="og:description" content="In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences." />
-<link rel="canonical" href="http://localhost:4000/cwu/2024/05/02/exploring-views-in-swiftui/" />
-<meta property="og:url" content="http://localhost:4000/cwu/2024/05/02/exploring-views-in-swiftui/" />
+<link rel="canonical" href="https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/" />
+<meta property="og:url" content="https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/" />
 <meta property="og:site_name" content="Code with Usman" />
-<meta property="og:image" content="http://localhost:4000/cwu/public/" />
+<meta property="og:image" content="https://m-usmansaeed.github.io/cwu/public/" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2024-05-02T00:00:00+05:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="http://localhost:4000/cwu/public/" />
+<meta property="twitter:image" content="https://m-usmansaeed.github.io/cwu/public/" />
 <meta property="twitter:title" content="Exploring Views in SwiftUI" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Usman Saeed","url":"https://twitter.com/"},"dateModified":"2024-05-02T00:00:00+05:00","datePublished":"2024-05-02T00:00:00+05:00","description":"In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences.","headline":"Exploring Views in SwiftUI","image":"http://localhost:4000/cwu/public/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/cwu/2024/05/02/exploring-views-in-swiftui/"},"url":"http://localhost:4000/cwu/2024/05/02/exploring-views-in-swiftui/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Usman Saeed","url":"https://twitter.com/"},"dateModified":"2024-05-02T00:00:00+05:00","datePublished":"2024-05-02T00:00:00+05:00","description":"In SwiftUI, Views are the fundamental building blocks for constructing user interfaces. They represent everything from simple text labels to complex interactive elements. Understanding how to work with Views is essential for creating engaging and dynamic UI experiences.","headline":"Exploring Views in SwiftUI","image":"https://m-usmansaeed.github.io/cwu/public/","mainEntityOfPage":{"@type":"WebPage","@id":"https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/"},"url":"https://m-usmansaeed.github.io/cwu/2024/05/02/exploring-views-in-swiftui/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -48,8 +49,6 @@
 <body>
 
   <header class="masthead">
-
-    <script src="/cwu/scripts/toggle.js"></script>
 
     <nav>
 
@@ -319,17 +318,45 @@
   </div>
 
     <footer class="footer">
-      <a class="home" href="http://localhost:4000">
+      <a class="home" href="https://m-usmansaeed.github.io">
         <img class="avatar" alt="m-usmansaeed" width="100" height="100" data-proofer-ignore="true" src="https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=100" srcset="https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=100 1x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=200 2x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=300 3x, https://avatars1.githubusercontent.com/m-usmansaeed?v=3&s=400 4x" />
       </a>
 
       <div class="copyright">
         <!-- <small>Hi there! My name is Usman.</small> -->
-        <p>Usman Saeed &copy; <time datetime="2024-05-08T17:02:13+05:00">2024</time>. All rights reserved.</p>
+        <p>Usman Saeed &copy; <time datetime="2024-05-08T19:00:32+05:00">2024</time>. All rights reserved.</p>
       </div>
     </footer>
 
   </div>
 </body>
+
+<!-- copy code block -->
+<script>
+  var codeBlocks = document.querySelectorAll('pre.highlight');
+  codeBlocks.forEach(function (codeBlock) {
+    var copyButton = document.createElement('button');
+    copyButton.className = 'copy';
+    copyButton.type = 'button';
+    copyButton.ariaLabel = 'Copy code to clipboard';
+    copyButton.innerText = 'Copy';
+
+    codeBlock.append(copyButton);
+
+    copyButton.addEventListener('click', function () {
+      var code = codeBlock.querySelector('code').innerText.trim();
+      window.navigator.clipboard.writeText(code);
+
+      copyButton.innerText = 'Copied';
+      var fourSeconds = 4000;
+
+      setTimeout(function () {
+        copyButton.innerText = 'Copy';
+      }, fourSeconds);
+    });
+  });
+  </script>
+<!-- copy code block -->
+
 
 </html>
