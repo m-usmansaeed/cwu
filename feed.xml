@@ -1,4 +1,308 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-09T17:24:08+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Navigation in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui/" rel="alternate" type="text/html" title="Navigation in SwiftUI" /><published>2024-05-07T00:00:00+05:00</published><updated>2024-05-07T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui/"><![CDATA[<p>SwiftUI offers powerful tools for building intuitive navigation experiences within your iOS and iPadOS applications. This article explores various navigation techniques, providing code examples and explanations to guide you.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-10T14:57:16+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Mastering Lists in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/10/mastering-lists-in-swiftui/" rel="alternate" type="text/html" title="Mastering Lists in SwiftUI" /><published>2024-05-10T00:00:00+05:00</published><updated>2024-05-10T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/10/mastering-lists-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/10/mastering-lists-in-swiftui/"><![CDATA[<p>Lists are a cornerstone for displaying structured data in SwiftUI applications. They provide a flexible and efficient way to present collections of items, from grocery lists to intricate navigation menus. This article delves into the core concepts of Lists in SwiftUI, guiding you through essential code examples and practical applications.</p>
+
+<p><strong>Creating Basic Lists</strong></p>
+
+<p>The most straightforward way to create a List is by providing individual views for each row. Here’s an example:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">FruitList</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Apple"</span><span class="p">,</span> <span class="s">"Banana"</span><span class="p">,</span> <span class="s">"Cherry"</span><span class="p">]</span>
+
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">List</span> <span class="p">{</span>
+            <span class="kt">ForEach</span><span class="p">(</span><span class="n">fruits</span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="p">\</span><span class="o">.</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">fruit</span> <span class="k">in</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute;">
+            <clipPath id="screenMask" clipPathUnits="objectBoundingBox" transform="scale(0.0021999, 0.0010177)">
+                <path id="Shape" d="M56 953 C25.072 953 0 927.928 0 897 L0 57 C0 26.072 25.072 1 56 1 L388 1 C418.928 1 444 26.072 444 57 L444 897 C444 927.928 418.928 953 388 953 L56 953 Z M168.5 56 L274.5 56 C286.926 56 297 45.926 297 33.5 297 21.074 286.926 11 274.5 11 L168.5 11 C156.074 11 146 21.074 146 33.5 146 45.926 156.074 56 168.5 56 Z" transform="translate(5 1)" fill="#978922" fill-opacity="1" />
+            </clipPath>
+        </svg>
+        <img class="iphoneScreen" src="/cwu/public/1-mastering-lists-in-swiftui.jpg" alt="mastering-lists-in-swiftui" />
+    </div>
+</div>
+
+<p><strong>Explanation:</strong></p>
+
+<ol>
+  <li>We define a <code class="language-plaintext highlighter-rouge">FruitList</code> struct that holds an array of fruit names.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">List</code> container displays the content within.</li>
+  <li><code class="language-plaintext highlighter-rouge">ForEach</code> iterates over the <code class="language-plaintext highlighter-rouge">fruits</code> array, assigning each element a unique identifier (<code class="language-plaintext highlighter-rouge">\.self</code>).</li>
+  <li>Inside the loop, a <code class="language-plaintext highlighter-rouge">Text</code> view displays the current fruit name for each row.</li>
+</ol>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/list">List</a>
+and <a href="https://developer.apple.com/documentation/swiftui/foreach">ForEach</a></p>
+
+<hr />
+
+<p><strong>Dynamic Lists with Identifiable Data</strong></p>
+
+<p>For larger datasets, it’s more efficient to create Lists on demand using identifiable data. This example demonstrates how:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">SongList</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">songs</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="kt">Song</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Bohemian Rhapsody"</span><span class="p">,</span> <span class="nv">artist</span><span class="p">:</span> <span class="s">"Queen"</span><span class="p">),</span>
+        <span class="kt">Song</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Imagine"</span><span class="p">,</span> <span class="nv">artist</span><span class="p">:</span> <span class="s">"John Lennon"</span><span class="p">),</span>
+        <span class="kt">Song</span><span class="p">(</span><span class="nv">title</span><span class="p">:</span> <span class="s">"Hallelujah"</span><span class="p">,</span> <span class="nv">artist</span><span class="p">:</span> <span class="s">"Leonard Cohen"</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">List</span> <span class="p">{</span>
+            <span class="kt">ForEach</span><span class="p">(</span><span class="n">songs</span><span class="p">)</span> <span class="p">{</span> <span class="n">song</span> <span class="k">in</span>
+                <span class="kt">HStack</span> <span class="p">{</span>
+                    <span class="kt">Text</span><span class="p">(</span><span class="n">song</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+                    <span class="kt">Spacer</span><span class="p">()</span>
+                    <span class="kt">Text</span><span class="p">(</span><span class="n">song</span><span class="o">.</span><span class="n">artist</span><span class="p">)</span>
+                        <span class="o">.</span><span class="nf">foregroundStyle</span><span class="p">(</span><span class="o">.</span><span class="n">secondary</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Song</span><span class="p">:</span> <span class="kt">Identifiable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">id</span> <span class="o">=</span> <span class="kt">UUID</span><span class="p">()</span> <span class="c1">// Unique identifier</span>
+    <span class="k">let</span> <span class="nv">title</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">artist</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute;">
+            <clipPath id="screenMask" clipPathUnits="objectBoundingBox" transform="scale(0.0021999, 0.0010177)">
+                <path id="Shape" d="M56 953 C25.072 953 0 927.928 0 897 L0 57 C0 26.072 25.072 1 56 1 L388 1 C418.928 1 444 26.072 444 57 L444 897 C444 927.928 418.928 953 388 953 L56 953 Z M168.5 56 L274.5 56 C286.926 56 297 45.926 297 33.5 297 21.074 286.926 11 274.5 11 L168.5 11 C156.074 11 146 21.074 146 33.5 146 45.926 156.074 56 168.5 56 Z" transform="translate(5 1)" fill="#978922" fill-opacity="1" />
+            </clipPath>
+        </svg>
+        <img class="iphoneScreen" src="/cwu/public/2-mastering-lists-in-swiftui.jpg" alt="mastering-lists-in-swiftui" />
+    </div>
+</div>
+
+<p><strong>Explanation:</strong></p>
+
+<ol>
+  <li>We define a <code class="language-plaintext highlighter-rouge">Song</code> struct with properties for title, artist, and a unique identifier (<code class="language-plaintext highlighter-rouge">id</code>).</li>
+  <li>An array of <code class="language-plaintext highlighter-rouge">Song</code> instances is created.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">List</code> displays content dynamically.</li>
+  <li><code class="language-plaintext highlighter-rouge">ForEach</code> iterates over the <code class="language-plaintext highlighter-rouge">songs</code> array, where each song becomes available within the loop.</li>
+  <li>An <code class="language-plaintext highlighter-rouge">HStack</code> arranges <code class="language-plaintext highlighter-rouge">Text</code> views for title and artist within a row.</li>
+</ol>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swift/identifiable">Identifiable</a>
+and <a href="https://developer.apple.com/documentation/foundation/uuid">UUID</a></p>
+
+<hr />
+
+<p><strong>Customizing List Appearance</strong></p>
+
+<p>SwiftUI offers various ways to customize the visual style of Lists. Here’s an example using the <code class="language-plaintext highlighter-rouge">listStyle</code> modifier:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">GroceryList</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">groceries</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Milk"</span><span class="p">,</span> <span class="s">"Bread"</span><span class="p">,</span> <span class="s">"Eggs"</span><span class="p">,</span> <span class="s">"Cheese"</span><span class="p">]</span>
+
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">List</span> <span class="p">{</span>
+            <span class="kt">ForEach</span><span class="p">(</span><span class="n">groceries</span><span class="p">,</span> <span class="nv">id</span><span class="p">:</span> <span class="p">\</span><span class="o">.</span><span class="k">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">item</span> <span class="k">in</span>
+                <span class="kt">Text</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">listStyle</span><span class="p">(</span><span class="kt">PlainListStyle</span><span class="p">())</span> <span class="c1">// Set list style to plain</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute;">
+            <clipPath id="screenMask" clipPathUnits="objectBoundingBox" transform="scale(0.0021999, 0.0010177)">
+                <path id="Shape" d="M56 953 C25.072 953 0 927.928 0 897 L0 57 C0 26.072 25.072 1 56 1 L388 1 C418.928 1 444 26.072 444 57 L444 897 C444 927.928 418.928 953 388 953 L56 953 Z M168.5 56 L274.5 56 C286.926 56 297 45.926 297 33.5 297 21.074 286.926 11 274.5 11 L168.5 11 C156.074 11 146 21.074 146 33.5 146 45.926 156.074 56 168.5 56 Z" transform="translate(5 1)" fill="#978922" fill-opacity="1" />
+            </clipPath>
+        </svg>
+        <img class="iphoneScreen" src="/cwu/public/3-mastering-lists-in-swiftui.jpg" alt="mastering-lists-in-swiftui" />
+    </div>
+</div>
+
+<p><strong>Explanation:</strong></p>
+
+<ol>
+  <li>The <code class="language-plaintext highlighter-rouge">listStyle</code> modifier applies a specific visual style to the List.</li>
+  <li>In this case, <code class="language-plaintext highlighter-rouge">PlainListStyle()</code> creates a simple, unstyled List.</li>
+</ol>
+
+<p>Read more about <a href="https://developer.apple.com/documentation/swiftui/list">List</a> and
+<a href="https://developer.apple.com/documentation/swiftui/liststyle">listStyle</a> Modifier (The documentation for <code class="language-plaintext highlighter-rouge">listStyle</code> is also included within the general List documentation).</p>
+
+<p>To read more about <code class="language-plaintext highlighter-rouge">Modifier's</code> check out <a href="/cwu/2024/05/03/exploring-modifiers-in-swiftui/">Elevate Your SwiftUI User Interface with Modifiers</a></p>
+
+<p><strong>Adding Navigation with Lists</strong></p>
+
+<p>Lists can seamlessly integrate with navigation to create hierarchical app structures. Here’s an example:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">LandmarkList</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">landmarks</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="kt">Landmark</span><span class="p">(</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="s">"Hagia Sophia"</span><span class="p">,</span>
+            <span class="nv">imageName</span><span class="p">:</span> <span class="s">"hagiaSophia"</span><span class="p">),</span>
+        <span class="kt">Landmark</span><span class="p">(</span>
+            <span class="nv">name</span><span class="p">:</span> <span class="s">"Great Wall of China"</span><span class="p">,</span>
+            <span class="nv">imageName</span><span class="p">:</span> <span class="s">"greatwall"</span><span class="p">)</span>
+    <span class="p">]</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">NavigationStack</span> <span class="p">{</span>
+            <span class="kt">List</span> <span class="p">{</span>
+                <span class="kt">ForEach</span><span class="p">(</span><span class="n">landmarks</span><span class="p">)</span> <span class="p">{</span> <span class="n">landmark</span> <span class="k">in</span>
+                    <span class="kt">NavigationLink</span><span class="p">(</span>
+                        <span class="nv">destination</span><span class="p">:</span> <span class="kt">LandmarkDetail</span><span class="p">(</span>
+                            <span class="nv">landmark</span><span class="p">:</span> <span class="n">landmark</span><span class="p">)</span>
+                    <span class="p">)</span> <span class="p">{</span>
+                        <span class="kt">LandmarkItem</span><span class="p">(</span>
+                            <span class="nv">landmark</span><span class="p">:</span> <span class="n">landmark</span><span class="p">)</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">navigationTitle</span><span class="p">(</span><span class="s">"Landmarks"</span><span class="p">)</span>
+        
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">struct</span> <span class="kt">Landmark</span><span class="p">:</span> <span class="kt">Identifiable</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">id</span> <span class="o">=</span> <span class="kt">UUID</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span>
+    <span class="k">let</span> <span class="nv">imageName</span><span class="p">:</span> <span class="kt">String</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute;">
+            <clipPath id="screenMask" clipPathUnits="objectBoundingBox" transform="scale(0.0021999, 0.0010177)">
+                <path id="Shape" d="M56 953 C25.072 953 0 927.928 0 897 L0 57 C0 26.072 25.072 1 56 1 L388 1 C418.928 1 444 26.072 444 57 L444 897 C444 927.928 418.928 953 388 953 L56 953 Z M168.5 56 L274.5 56 C286.926 56 297 45.926 297 33.5 297 21.074 286.926 11 274.5 11 L168.5 11 C156.074 11 146 21.074 146 33.5 146 45.926 156.074 56 168.5 56 Z" transform="translate(5 1)" fill="#978922" fill-opacity="1" />
+            </clipPath>
+        </svg>
+        <img class="iphoneScreen" src="/cwu/public/4-mastering-lists-in-swiftui.jpg" alt="mastering-lists-in-swiftui" />
+    </div>
+</div>
+
+<p>To read more about <code class="language-plaintext highlighter-rouge">Navigation</code> check out <a href="/cwu/2024/05/07/exploring-navigation-in-swiftui/">Navigation in SwiftUI</a></p>
+
+<p>Lets create a simple <code class="language-plaintext highlighter-rouge">LandmarkItem</code> component.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">LandmarkItem</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">landmark</span><span class="p">:</span> <span class="kt">Landmark</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">HStack</span> <span class="p">{</span>
+            <span class="kt">Image</span><span class="p">(</span><span class="n">landmark</span><span class="o">.</span><span class="n">imageName</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+                <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">clipShape</span><span class="p">(</span><span class="kt">Circle</span><span class="p">())</span>
+                <span class="o">.</span><span class="nf">aspectRatio</span><span class="p">(</span><span class="nv">contentMode</span><span class="p">:</span> <span class="o">.</span><span class="n">fill</span><span class="p">)</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="n">landmark</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">title3</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p><img src="/cwu/public/5-mastering-lists-in-swiftui.jpg" alt="list item" /></p>
+
+<p>And finally lets create a simple <code class="language-plaintext highlighter-rouge">LandmarkDetail</code> component.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">LandmarkDetail</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nv">landmark</span><span class="p">:</span> <span class="kt">Landmark</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Image</span><span class="p">(</span><span class="n">landmark</span><span class="o">.</span><span class="n">imageName</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+                <span class="o">.</span><span class="nf">aspectRatio</span><span class="p">(</span><span class="nv">contentMode</span><span class="p">:</span> <span class="o">.</span><span class="n">fit</span><span class="p">)</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="n">landmark</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">font</span><span class="p">(</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="position: absolute;">
+            <clipPath id="screenMask" clipPathUnits="objectBoundingBox" transform="scale(0.0021999, 0.0010177)">
+                <path id="Shape" d="M56 953 C25.072 953 0 927.928 0 897 L0 57 C0 26.072 25.072 1 56 1 L388 1 C418.928 1 444 26.072 444 57 L444 897 C444 927.928 418.928 953 388 953 L56 953 Z M168.5 56 L274.5 56 C286.926 56 297 45.926 297 33.5 297 21.074 286.926 11 274.5 11 L168.5 11 C156.074 11 146 21.074 146 33.5 146 45.926 156.074 56 168.5 56 Z" transform="translate(5 1)" fill="#978922" fill-opacity="1" />
+            </clipPath>
+        </svg>
+        <img class="iphoneScreen" src="/cwu/public/6-mastering-lists-in-swiftui.jpg" alt="mastering-lists-in-swiftui" />
+    </div>
+</div>
+
+<p>(Hagia Sophia) Photo by <a href="https://unsplash.com/@ibuzn?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Ibrahim Uzun</a> on <a href="https://unsplash.com/photos/a-view-of-a-mosque-through-an-archway-DWqtYEj-Iig?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a>, 
+(Great Wall of China) Photo by <a href="https://unsplash.com/@rainrainbowchou?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Rita Chou</a> on <a href="https://unsplash.com/photos/great-wall-of-china-iYAF7dhw7yI?utm_content=creditCopyText&amp;utm_medium=referral&amp;utm_source=unsplash">Unsplash</a></p>
+
+<hr />
+
+<p>This completes the example, showcasing how a <code class="language-plaintext highlighter-rouge">LandmarkDetail</code> view can be presented when a user taps on a landmark in the <code class="language-plaintext highlighter-rouge">LandmarkList</code>.</p>
+
+<h2 id="swiftui-list-concepts-and-apple-documentation">SwiftUI List Concepts and Apple Documentation</h2>
+
+<p>Here’s a table summarizing the key concepts covered in the article along with their corresponding Apple documentation links:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concept Name</th>
+      <th>Apple Documentation Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">List</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/list">List</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ForEach</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/foreach">ForEach</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Identifiable</code></td>
+      <td><a href="https://developer.apple.com/documentation/swift/identifiable">Identifiable</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">UUID</code></td>
+      <td><a href="https://developer.apple.com/documentation/foundation/uuid">UUID</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">listStyle</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/liststyle">liststyle</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NavigationLink</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/navigationlink">NavigationLink</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>In Conclusion</strong></p>
+
+<p>Lists offer a powerful and versatile way to structure data and navigation in SwiftUI applications. By understanding the core concepts and exploring the various customization options, you can create engaging and user-friendly interfaces for your apps. As you delve deeper into SwiftUI, explore the official Apple documentation for more advanced topics like:</p>
+
+<ul>
+  <li>Working with different List styles (e.g., <code class="language-plaintext highlighter-rouge">GroupedListStyle</code>, <code class="language-plaintext highlighter-rouge">InsetListStyle</code>)</li>
+  <li>Handling selection and disclosure within Lists</li>
+  <li>Implementing custom List row views for tailored presentations</li>
+</ul>
+
+<p>Remember, the power of Lists lies in their flexibility. Experiment and explore to create intuitive and visually appealing user experiences in your SwiftUI projects!</p>
+
+<p>To learn more about List and other SwiftUI concepts, check out the <a href="https://developer.apple.com/documentation/swiftui">official documentation</a> provided by Apple.</p>]]></content><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><category term="SwiftUI" /><summary type="html"><![CDATA[Lists are a cornerstone for displaying structured data in SwiftUI applications. They provide a flexible and efficient way to present collections of items, from grocery lists to intricate navigation menus. This article delves into the core concepts of Lists in SwiftUI, guiding you through essential code examples and practical applications.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://m-usmansaeed.github.io/cwu/public/" /><media:content medium="image" url="https://m-usmansaeed.github.io/cwu/public/" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Navigation in SwiftUI</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui/" rel="alternate" type="text/html" title="Navigation in SwiftUI" /><published>2024-05-07T00:00:00+05:00</published><updated>2024-05-07T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/07/exploring-navigation-in-swiftui/"><![CDATA[<p>SwiftUI offers powerful tools for building intuitive navigation experiences within your iOS and iPadOS applications. This article explores various navigation techniques, providing code examples and explanations to guide you.</p>
 
 <p><strong>Navigation Concepts</strong></p>
 
