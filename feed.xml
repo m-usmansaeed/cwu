@@ -1,4 +1,408 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-13T23:05:18+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Mastering Scrolling in SwiftUI with ScrollView</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/13/mastering-scrolling-in-swiftui-with-scrollview/" rel="alternate" type="text/html" title="Mastering Scrolling in SwiftUI with ScrollView" /><published>2024-05-13T00:00:00+05:00</published><updated>2024-05-13T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/13/mastering-scrolling-in-swiftui-with-scrollview</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/13/mastering-scrolling-in-swiftui-with-scrollview/"><![CDATA[<p>In the realm of mobile app development, ensuring users can seamlessly navigate through content that exceeds screen boundaries is paramount. SwiftUI’s <code class="language-plaintext highlighter-rouge">ScrollView</code> component empowers you to create intuitive scrolling experiences, allowing users to explore information beyond the initial viewport. This article delves into the fundamentals of <code class="language-plaintext highlighter-rouge">ScrollView</code>, equipping you with the knowledge to implement effective scrolling mechanisms in your SwiftUI applications.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://m-usmansaeed.github.io/cwu/feed.xml" rel="self" type="application/atom+xml" /><link href="https://m-usmansaeed.github.io/cwu/" rel="alternate" type="text/html" /><updated>2024-05-16T23:07:41+05:00</updated><id>https://m-usmansaeed.github.io/cwu/feed.xml</id><title type="html">Code with Usman</title><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><entry><title type="html">Elevating Your SwiftUI App with Dynamic Animations</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/16/elevating-your-swiftui-app-with-dynamic-animations/" rel="alternate" type="text/html" title="Elevating Your SwiftUI App with Dynamic Animations" /><published>2024-05-16T00:00:00+05:00</published><updated>2024-05-16T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/16/elevating-your-swiftui-app-with-dynamic-animations</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/16/elevating-your-swiftui-app-with-dynamic-animations/"><![CDATA[<p>Harnessing the potential of animations in SwiftUI can truly elevate your app’s user experience. These dynamic elements not only guide users through transitions but also enhance engagement and responsiveness. In this revamped guide, we’ll delve into SwiftUI animations with refined code examples, ensuring clarity and practicality at every step.</p>
+
+<p><strong>1. Basic Animation with <code class="language-plaintext highlighter-rouge">withAnimation</code></strong></p>
+
+<p>Animate a view’s size change seamlessly with <code class="language-plaintext highlighter-rouge">withAnimation</code>:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">isShowingCircle</span> <span class="o">=</span> <span class="kc">false</span>
+
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">Button</span><span class="p">(</span><span class="s">"Animate"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">self</span><span class="o">.</span><span class="nf">animateCircle</span><span class="p">()</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">overlay</span><span class="p">(</span>
+            <span class="kt">Circle</span><span class="p">()</span>
+                <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">frame</span><span class="p">(</span>
+                    <span class="nv">width</span><span class="p">:</span> <span class="n">isShowingCircle</span> <span class="p">?</span> <span class="mi">200</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+                    <span class="nv">height</span><span class="p">:</span> <span class="n">isShowingCircle</span> <span class="p">?</span> <span class="mi">200</span> <span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">onTapGesture</span> <span class="p">{</span>
+                    <span class="k">self</span><span class="o">.</span><span class="nf">animateCircle</span><span class="p">()</span>
+                <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">animateCircle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">withAnimation</span><span class="p">(</span><span class="o">.</span><span class="nf">easeInOut</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">isShowingCircle</span><span class="o">.</span><span class="nf">toggle</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <div class="maskedVideo">
+            <video muted="" autoplay="" loop="">
+                <source src="/cwu/public/1-elevating-your-swiftui-app-with-dynamic-animations.mp4" alt="elevating-your-swiftui-app-with-dynamic-animations" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+</div>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">@State private var isShowingCircle = false</code>: Declares a state variable <code class="language-plaintext highlighter-rouge">isShowingCircle</code>, which tracks whether the circle is currently visible or not.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Button("Animate") { ... }</code>: Creates a button with the title “Animate”. When tapped, it calls the <code class="language-plaintext highlighter-rouge">animateCircle()</code> method to animate the circle.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.overlay( ... )</code>: Adds an overlay to the button. The overlay contains a circle that can be animated.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Circle() ...</code>: Creates a circle shape with a red fill color.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.frame( ... )</code>: Sets the frame size of the circle. The size depends on the value of <code class="language-plaintext highlighter-rouge">isShowingCircle</code>, where the circle will have a width and height of 200 when <code class="language-plaintext highlighter-rouge">isShowingCircle</code> is true, and 0 otherwise.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.onTapGesture { ... }</code>: Attaches a tap gesture to the circle. When tapped, it also calls the <code class="language-plaintext highlighter-rouge">animateCircle()</code> method to animate the circle.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">func animateCircle() { ... }</code>: Defines a method <code class="language-plaintext highlighter-rouge">animateCircle()</code> to animate the circle. Inside the method, <code class="language-plaintext highlighter-rouge">withAnimation</code> is used to animate the change of the <code class="language-plaintext highlighter-rouge">isShowingCircle</code> state variable. The circle’s appearance will transition smoothly with an ease-in-out animation over a duration of 1 second.</p>
+  </li>
+</ol>
+
+<p>Overall, this code creates a button that toggles the visibility of a red circle when tapped. The circle fades in and out with a smooth animation effect.</p>
+
+<p><strong>2. Animating View Properties with <code class="language-plaintext highlighter-rouge">animation</code></strong></p>
+
+<p>Animate opacity changes smoothly:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">showText</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">Text</span><span class="p">(</span><span class="s">"Hello World!"</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="n">showText</span> <span class="p">?</span> <span class="mf">1.0</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">animation</span><span class="p">(</span><span class="o">.</span><span class="nf">linear</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">),</span> <span class="nv">value</span><span class="p">:</span> <span class="n">showText</span><span class="p">)</span>
+            <span class="kt">Button</span><span class="p">(</span><span class="s">"Show Text"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">showText</span><span class="o">.</span><span class="nf">toggle</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This SwiftUI code creates a view that displays a text element and a button. The text element can be shown or hidden based on the state variable <code class="language-plaintext highlighter-rouge">showText</code>. Let’s break down the code:</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">@State private var showText = false</code>: Declares a state variable <code class="language-plaintext highlighter-rouge">showText</code>, which tracks whether the text element is currently shown (<code class="language-plaintext highlighter-rouge">true</code>) or hidden (<code class="language-plaintext highlighter-rouge">false</code>).</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">VStack { ... }</code>: Creates a vertical stack to arrange the UI elements vertically.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Text("Hello World!") ...</code>: Creates a text element with the content “Hello World!”.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.opacity(showText ? 1.0 : 0.0)</code>: Sets the opacity of the text element based on the value of <code class="language-plaintext highlighter-rouge">showText</code>. If <code class="language-plaintext highlighter-rouge">showText</code> is <code class="language-plaintext highlighter-rouge">true</code>, the opacity is set to 1.0 (fully visible); otherwise, it’s set to 0.0 (completely transparent), effectively hiding the text.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.animation(.linear(duration: 0.5), value: showText)</code>: Applies an animation to the opacity change. When <code class="language-plaintext highlighter-rouge">showText</code> changes, the opacity transition will occur with a linear animation over a duration of 0.5 seconds. This animation is only applied to changes in the <code class="language-plaintext highlighter-rouge">showText</code> state, specified by <code class="language-plaintext highlighter-rouge">value: showText</code>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Button("Show Text") { ... }</code>: Creates a button with the title “Show Text”. When tapped, it toggles the value of <code class="language-plaintext highlighter-rouge">showText</code>, effectively showing or hiding the text element.</p>
+  </li>
+</ol>
+
+<p>Overall, this code creates a simple UI where tapping the button toggles the visibility of the text element with a fade-in and fade-out animation effect.</p>
+
+<p><strong>3. Binding Animation</strong></p>
+
+<p>Rotate a view with animation:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">isRotated</span> <span class="o">=</span> <span class="kc">false</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">VStack</span> <span class="p">{</span>
+                <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"swift"</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+                    <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">foregroundStyle</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">clipShape</span><span class="p">(</span><span class="kt">Circle</span><span class="p">())</span>
+            <span class="o">.</span><span class="nf">shadow</span><span class="p">(</span><span class="nv">radius</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">rotationEffect</span><span class="p">(</span><span class="o">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">isRotated</span> <span class="p">?</span> <span class="mi">360</span> <span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="o">.</span><span class="nf">animation</span><span class="p">(</span><span class="kt">Animation</span><span class="o">.</span><span class="nf">easeInOut</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">repeatForever</span><span class="p">(),</span> <span class="nv">value</span><span class="p">:</span> <span class="n">isRotated</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">maxWidth</span><span class="p">:</span> <span class="o">.</span><span class="n">infinity</span><span class="p">,</span> <span class="nv">maxHeight</span><span class="p">:</span> <span class="o">.</span><span class="n">infinity</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">edgesIgnoringSafeArea</span><span class="p">(</span><span class="o">.</span><span class="n">all</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">blue</span><span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+        <span class="o">.</span><span class="n">onAppear</span> <span class="p">{</span>
+            <span class="n">isRotated</span><span class="o">.</span><span class="nf">toggle</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <div class="maskedVideo">
+            <video muted="" autoplay="" loop="">
+                <source src="/cwu/public/2-elevating-your-swiftui-app-with-dynamic-animations.mp4" alt="elevating-your-swiftui-app-with-dynamic-animations" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+</div>
+
+<p>Let’s break down the code:</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">@State private var isRotated = false</code>: This line declares a state variable <code class="language-plaintext highlighter-rouge">isRotated</code>, which tracks whether the rotation animation is currently active (<code class="language-plaintext highlighter-rouge">true</code>) or not (<code class="language-plaintext highlighter-rouge">false</code>). The <code class="language-plaintext highlighter-rouge">@State</code> property wrapper is used to allow the variable to modify the view’s state and trigger updates to the UI when its value changes.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.rotationEffect(.degrees(isRotated ? 360 : 0))</code>: This line applies a rotation effect to the <code class="language-plaintext highlighter-rouge">VStack</code> containing an image of the Swift logo. When <code class="language-plaintext highlighter-rouge">isRotated</code> is <code class="language-plaintext highlighter-rouge">true</code>, the rotation angle is set to 360 degrees, causing the image to rotate fully. When <code class="language-plaintext highlighter-rouge">isRotated</code> is <code class="language-plaintext highlighter-rouge">false</code>, the rotation angle is set to 0 degrees, keeping the image in its original orientation.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.animation(Animation.easeInOut(duration: 1.5).repeatForever(), value: isRotated)</code>: This line applies an animation to the rotation effect. The animation is set to ease in and out over a duration of 1.5 seconds using <code class="language-plaintext highlighter-rouge">Animation.easeInOut(duration: 1.5)</code>. The <code class="language-plaintext highlighter-rouge">.repeatForever()</code> modifier ensures that the animation repeats indefinitely. The <code class="language-plaintext highlighter-rouge">value: isRotated</code> parameter specifies that the animation should be triggered whenever the value of <code class="language-plaintext highlighter-rouge">isRotated</code> changes.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.onAppear { isRotated.toggle() }</code>: This line toggles the value of <code class="language-plaintext highlighter-rouge">isRotated</code> when the view appears. This action starts the rotation animation immediately upon the view’s appearance.</p>
+  </li>
+</ol>
+
+<p>In summary, this code creates a rotating animation effect for an image of the Swift logo. The rotation animation starts when the view appears and continues indefinitely, with the image rotating 360 degrees and then repeating the rotation animation.</p>
+
+<p><strong>4. Let see another binding animation example:</strong></p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">colorValue</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">isRotated</span> <span class="o">=</span> <span class="kc">false</span>
+
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">VStack</span> <span class="p">{</span>
+                <span class="kt">Image</span><span class="p">(</span><span class="nv">systemName</span><span class="p">:</span> <span class="s">"swift"</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">resizable</span><span class="p">()</span>
+                    <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">foregroundStyle</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">orange</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">background</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">clipShape</span><span class="p">(</span><span class="kt">Circle</span><span class="p">())</span>
+            <span class="o">.</span><span class="nf">shadow</span><span class="p">(</span><span class="nv">radius</span><span class="p">:</span> <span class="mi">4</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">rotationEffect</span><span class="p">(</span><span class="o">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">isRotated</span> <span class="p">?</span> <span class="mi">360</span> <span class="p">:</span> <span class="mi">0</span><span class="p">))</span>
+            <span class="o">.</span><span class="nf">animation</span><span class="p">(</span><span class="kt">Animation</span><span class="o">.</span><span class="nf">easeInOut</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">repeatForever</span><span class="p">(),</span> <span class="nv">value</span><span class="p">:</span> <span class="n">isRotated</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">maxWidth</span><span class="p">:</span> <span class="o">.</span><span class="n">infinity</span><span class="p">,</span> <span class="nv">maxHeight</span><span class="p">:</span> <span class="o">.</span><span class="n">infinity</span><span class="p">)</span>
+        <span class="o">.</span><span class="nf">background</span><span class="p">(</span>
+            <span class="kt">LinearGradient</span><span class="p">(</span>
+                <span class="nv">gradient</span><span class="p">:</span> <span class="kt">Gradient</span><span class="p">(</span>
+                    <span class="nv">colors</span><span class="p">:</span>
+                        <span class="p">[</span><span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="n">colorValue</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">),</span>
+                         <span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="n">colorValue</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">),</span>
+                         <span class="kt">Color</span><span class="p">(</span><span class="nv">red</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="nv">green</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nv">blue</span><span class="p">:</span> <span class="n">colorValue</span><span class="p">)</span>
+                        <span class="p">]),</span>
+                <span class="nv">startPoint</span><span class="p">:</span> <span class="o">.</span><span class="n">topLeading</span><span class="p">,</span> <span class="nv">endPoint</span><span class="p">:</span> <span class="o">.</span><span class="n">bottomTrailing</span><span class="p">)</span>
+            <span class="o">.</span><span class="nf">animation</span><span class="p">(</span><span class="kt">Animation</span><span class="o">.</span><span class="nf">easeInOut</span><span class="p">(</span><span class="nv">duration</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">)</span>
+                <span class="o">.</span><span class="nf">repeatForever</span><span class="p">(),</span> <span class="nv">value</span><span class="p">:</span> <span class="n">colorValue</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="o">.</span><span class="nf">edgesIgnoringSafeArea</span><span class="p">(</span><span class="o">.</span><span class="n">all</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">onAppear</span> <span class="p">{</span>
+            <span class="n">colorValue</span> <span class="o">=</span> <span class="mf">0.75</span>
+            <span class="n">isRotated</span><span class="o">.</span><span class="nf">toggle</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <div class="maskedVideo">
+            <video muted="" autoplay="" loop="">
+                <source src="/cwu/public/4-elevating-your-swiftui-app-with-dynamic-animations.mp4" alt="elevating-your-swiftui-app-with-dynamic-animations" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+</div>
+
+<p>Let’s break down the code:</p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">@State private var colorValue: Double = 0.0</code>: This line declares a state variable <code class="language-plaintext highlighter-rouge">colorValue</code> of type <code class="language-plaintext highlighter-rouge">Double</code> and initializes it to 0.0. The <code class="language-plaintext highlighter-rouge">@State</code> property wrapper is used to make <code class="language-plaintext highlighter-rouge">colorValue</code> mutable so that changes to its value can trigger UI updates.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.frame(maxWidth: .infinity, maxHeight: .infinity)</code>: This line sets the frame of the <code class="language-plaintext highlighter-rouge">VStack</code> to fill the maximum available width and height, effectively making it expand to fill the entire screen.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.background(...)</code>: This line sets the background of the <code class="language-plaintext highlighter-rouge">VStack</code> to a <code class="language-plaintext highlighter-rouge">LinearGradient</code>, which creates a gradient with multiple colors transitioning smoothly from one to another.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">LinearGradient(...)</code>: This part defines the properties of the gradient. It specifies three colors: one with its red component based on <code class="language-plaintext highlighter-rouge">colorValue</code> and green and blue components fixed at 0.5 and 1.0, respectively; another with its green component based on <code class="language-plaintext highlighter-rouge">colorValue</code> and red and blue components fixed at 1.0 and 0.5, respectively; and the third with its blue component based on <code class="language-plaintext highlighter-rouge">colorValue</code> and red and green components fixed at 0.5 and 1.0, respectively. This creates a dynamic gradient effect that changes based on the value of <code class="language-plaintext highlighter-rouge">colorValue</code>.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.animation(...)</code>: This line applies an animation to the <code class="language-plaintext highlighter-rouge">LinearGradient</code>. The animation is set to ease in and out over a duration of 1.5 seconds using <code class="language-plaintext highlighter-rouge">Animation.easeInOut(duration: 1.5)</code>. The <code class="language-plaintext highlighter-rouge">.repeatForever()</code> modifier ensures that the animation repeats indefinitely. The <code class="language-plaintext highlighter-rouge">value: colorValue</code> parameter specifies that the animation should be triggered whenever the value of <code class="language-plaintext highlighter-rouge">colorValue</code> changes.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.edgesIgnoringSafeArea(.all)</code>: This line tells SwiftUI to ignore the safe area and extend the background to cover the entire screen, including areas that might be hidden behind system bars.</p>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">.onAppear { colorValue = 0.75 }</code>: This line sets the <code class="language-plaintext highlighter-rouge">colorValue</code> to 0.75 when the view appears. This initial value determines the starting colors of the gradient.</p>
+  </li>
+</ol>
+
+<p>This code creates a dynamic gradient background that smoothly transitions between different colors based on the changing value of <code class="language-plaintext highlighter-rouge">colorValue</code>. The gradient animation repeats indefinitely, creating a visually appealing effect.</p>
+
+<p><strong>4. Custom Animation with <code class="language-plaintext highlighter-rouge">Animatable</code> Protocol</strong></p>
+
+<p>Lets implement a custom <code class="language-plaintext highlighter-rouge">ProgressRing</code> view with animated progress:</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ProgressRing</span><span class="p">:</span> <span class="kt">Shape</span> <span class="p">{</span>
+    
+    <span class="k">var</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">let</span> <span class="nv">strokeThickness</span><span class="p">:</span> <span class="kt">CGFloat</span>
+    
+    <span class="k">var</span> <span class="nv">animatableData</span><span class="p">:</span> <span class="kt">Double</span> <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="n">progress</span> <span class="p">}</span>
+        <span class="k">set</span> <span class="p">{</span> <span class="n">progress</span> <span class="o">=</span> <span class="n">newValue</span> <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">path</span><span class="p">(</span><span class="k">in</span> <span class="nv">rect</span><span class="p">:</span> <span class="kt">CGRect</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Path</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">center</span> <span class="o">=</span> <span class="kt">CGPoint</span><span class="p">(</span><span class="nv">x</span><span class="p">:</span> <span class="n">rect</span><span class="o">.</span><span class="n">midX</span><span class="p">,</span> <span class="nv">y</span><span class="p">:</span> <span class="n">rect</span><span class="o">.</span><span class="n">midY</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">radius</span> <span class="o">=</span> <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">rect</span><span class="o">.</span><span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">strokeThickness</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">let</span> <span class="nv">startAngle</span> <span class="o">=</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">radians</span><span class="p">:</span> <span class="o">-.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">endAngle</span> <span class="o">=</span> <span class="kt">Angle</span><span class="p">(</span><span class="nv">radians</span><span class="p">:</span> <span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">progress</span> <span class="o">-</span> <span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">let</span> <span class="nv">endPoint</span> <span class="o">=</span> <span class="kt">CGPoint</span><span class="p">(</span>
+            <span class="nv">x</span><span class="p">:</span> <span class="n">center</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="nf">cos</span><span class="p">(</span><span class="kt">CGFloat</span><span class="p">(</span><span class="n">endAngle</span><span class="o">.</span><span class="n">radians</span><span class="p">)),</span>
+            <span class="nv">y</span><span class="p">:</span> <span class="n">center</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="nf">sin</span><span class="p">(</span><span class="kt">CGFloat</span><span class="p">(</span><span class="n">endAngle</span><span class="o">.</span><span class="n">radians</span><span class="p">))</span>
+        <span class="p">)</span>
+        
+        <span class="k">var</span> <span class="nv">path</span> <span class="o">=</span> <span class="kt">Path</span><span class="p">()</span>
+        <span class="n">path</span><span class="o">.</span><span class="nf">addArc</span><span class="p">(</span><span class="nv">center</span><span class="p">:</span> <span class="n">center</span><span class="p">,</span> <span class="nv">radius</span><span class="p">:</span> <span class="n">radius</span><span class="p">,</span> 
+                    <span class="nv">startAngle</span><span class="p">:</span> <span class="n">startAngle</span><span class="p">,</span> 
+                    <span class="nv">endAngle</span><span class="p">:</span> <span class="n">endAngle</span><span class="p">,</span> <span class="nv">clockwise</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+        <span class="n">path</span><span class="o">.</span><span class="nf">addLine</span><span class="p">(</span><span class="nv">to</span><span class="p">:</span> <span class="n">endPoint</span><span class="p">)</span>
+        
+        <span class="k">let</span> <span class="nv">strokeStyle</span> <span class="o">=</span> <span class="kt">StrokeStyle</span><span class="p">(</span><span class="nv">lineWidth</span><span class="p">:</span> <span class="n">strokeThickness</span><span class="p">,</span> 
+                                      <span class="nv">lineCap</span><span class="p">:</span> <span class="o">.</span><span class="n">round</span><span class="p">,</span> 
+                                      <span class="nv">lineJoin</span><span class="p">:</span> <span class="o">.</span><span class="n">round</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path</span><span class="o">.</span><span class="nf">strokedPath</span><span class="p">(</span><span class="n">strokeStyle</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Let’s break down the code:</p>
+
+<ul>
+  <li>This is a custom SwiftUI shape called <code class="language-plaintext highlighter-rouge">ProgressRing</code>, which draws a circular progress ring based on the given <code class="language-plaintext highlighter-rouge">progress</code> value.</li>
+  <li>It conforms to the <code class="language-plaintext highlighter-rouge">Shape</code> protocol, which requires implementing the <code class="language-plaintext highlighter-rouge">path(in:)</code> method to define the shape’s path.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">progress</code> property determines the current progress of the ring, with a default value of 1.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">animatableData</code> property allows SwiftUI to animate changes to the <code class="language-plaintext highlighter-rouge">progress</code> value.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">path(in:)</code> method calculates the circular path of the progress ring based on the <code class="language-plaintext highlighter-rouge">progress</code> value and other parameters like <code class="language-plaintext highlighter-rouge">strokeThickness</code>.</li>
+</ul>
+
+<p><strong>Usage:</strong>
+Integrate <code class="language-plaintext highlighter-rouge">ProgressRing</code> into your SwiftUI project and update the <code class="language-plaintext highlighter-rouge">progress</code> property to animate.</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">struct</span> <span class="kt">ContentView</span><span class="p">:</span> <span class="kt">View</span> <span class="p">{</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">progress</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="kd">@State</span> <span class="kd">private</span> <span class="k">var</span> <span class="nv">timer</span><span class="p">:</span> <span class="kt">Timer</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+    
+    <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kd">some</span> <span class="kt">View</span> <span class="p">{</span>
+        <span class="kt">VStack</span> <span class="p">{</span>
+            <span class="kt">ZStack</span> <span class="p">{</span>
+                <span class="kt">ProgressRing</span><span class="p">(</span><span class="nv">strokeThickness</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">150</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="kt">Color</span><span class="o">.</span><span class="n">gray</span><span class="o">.</span><span class="nf">opacity</span><span class="p">(</span><span class="mf">0.5</span><span class="p">))</span>
+                
+                <span class="kt">ProgressRing</span><span class="p">(</span><span class="nv">progress</span><span class="p">:</span> <span class="n">progress</span><span class="p">,</span> <span class="nv">strokeThickness</span><span class="p">:</span> <span class="mi">10</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">frame</span><span class="p">(</span><span class="nv">width</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span> <span class="nv">height</span><span class="p">:</span> <span class="mi">150</span><span class="p">)</span>
+                    <span class="o">.</span><span class="nf">foregroundColor</span><span class="p">(</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+                
+                <span class="kt">Text</span><span class="p">(</span><span class="s">"</span><span class="se">\(</span><span class="kt">String</span><span class="p">(</span><span class="nv">format</span><span class="p">:</span> <span class="s">"%.0f%%"</span><span class="p">,</span> <span class="n">progress</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+            <span class="p">}</span>
+            
+            <span class="kt">Button</span><span class="p">(</span><span class="s">"Download"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nf">startTimer</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">startTimer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">progress</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="kt">Timer</span><span class="o">.</span><span class="nf">scheduledTimer</span><span class="p">(</span>
+            <span class="nv">withTimeInterval</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nv">repeats</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span> <span class="n">timer</span> <span class="k">in</span>
+                <span class="n">progress</span> <span class="o">+=</span> <span class="mf">0.01</span>
+                <span class="k">if</span> <span class="n">progress</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="p">{</span>
+                    <span class="n">timer</span><span class="o">.</span><span class="nf">invalidate</span><span class="p">()</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="img-mobile-container">
+    <div class="iphonePreview">
+        <div class="maskedVideo">
+            <video muted="" autoplay="" loop="">
+                <source src="/cwu/public/5-elevating-your-swiftui-app-with-dynamic-animations.mp4" alt="elevating-your-swiftui-app-with-dynamic-animations" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+</div>
+
+<p>Let’s break down the code:</p>
+
+<ul>
+  <li>This is the main SwiftUI view that utilizes the <code class="language-plaintext highlighter-rouge">ProgressRing</code> shape to display a progress ring.</li>
+  <li>It includes a <code class="language-plaintext highlighter-rouge">progress</code> variable that is updated over time to simulate the progress of a download.</li>
+  <li>When the “Download” button is tapped, a timer is started to increment the <code class="language-plaintext highlighter-rouge">progress</code> value gradually.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">ZStack</code> contains two instances of the <code class="language-plaintext highlighter-rouge">ProgressRing</code> shape: one with a gray color representing the background ring and another with a blue color representing the progress.</li>
+  <li>The text inside the <code class="language-plaintext highlighter-rouge">ZStack</code> displays the current progress percentage.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">startTimer()</code> function initializes the progress to 0 and starts a timer to increment the progress value. The timer stops when the progress reaches 100%.</li>
+</ul>
+
+<h2 id="swiftui-animation-concepts-and-apple-documentation">SwiftUI Animation Concepts and Apple Documentation</h2>
+
+<p>Here’s a table summarizing the key concepts covered in the article along with their corresponding Apple documentation links:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Concepts</th>
+      <th>Apple Documentation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">withAnimation</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/withanimation(_:_:)">withAnimation</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.linear</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/animation/linear">.linear</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">.rotationEffect</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/view/rotationeffect(_:anchor:)">.rotationEffect</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LinearGradient</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/lineargradient">LinearGradient</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Shape</code></td>
+      <td><a href="https://developer.apple.com/documentation/swiftui/shape">Shape</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Conclusion</strong></p>
+
+<p>SwiftUI animations offer boundless opportunities to enrich your app’s UX. By mastering these concepts and experimenting with diverse animation types, you can craft an immersive user journey. Incorporate these techniques into your projects, explore Apple’s documentation, and unleash your creativity to captivate your audience.</p>]]></content><author><name>Usman Saeed</name><email>itsusman.saeed@gmail.com</email></author><category term="SwiftUI" /><summary type="html"><![CDATA[Harnessing the potential of animations in SwiftUI can truly elevate your app’s user experience. These dynamic elements not only guide users through transitions but also enhance engagement and responsiveness. In this revamped guide, we’ll delve into SwiftUI animations with refined code examples, ensuring clarity and practicality at every step.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://m-usmansaeed.github.io/cwu/public/" /><media:content medium="image" url="https://m-usmansaeed.github.io/cwu/public/" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Mastering Scrolling in SwiftUI with ScrollView</title><link href="https://m-usmansaeed.github.io/cwu/2024/05/13/mastering-scrolling-in-swiftui-with-scrollview/" rel="alternate" type="text/html" title="Mastering Scrolling in SwiftUI with ScrollView" /><published>2024-05-13T00:00:00+05:00</published><updated>2024-05-13T00:00:00+05:00</updated><id>https://m-usmansaeed.github.io/cwu/2024/05/13/mastering-scrolling-in-swiftui-with-scrollview</id><content type="html" xml:base="https://m-usmansaeed.github.io/cwu/2024/05/13/mastering-scrolling-in-swiftui-with-scrollview/"><![CDATA[<p>In the realm of mobile app development, ensuring users can seamlessly navigate through content that exceeds screen boundaries is paramount. SwiftUI’s <code class="language-plaintext highlighter-rouge">ScrollView</code> component empowers you to create intuitive scrolling experiences, allowing users to explore information beyond the initial viewport. This article delves into the fundamentals of <code class="language-plaintext highlighter-rouge">ScrollView</code>, equipping you with the knowledge to implement effective scrolling mechanisms in your SwiftUI applications.</p>
 
 <p><strong>Basic Horizontal Scrolling:</strong></p>
 
@@ -40,7 +444,7 @@
 <div class="img-mobile-container">
     <div class="iphonePreview">
         <div class="maskedVideo">
-            <video autoplay="" loop="" muted="">
+            <video muted="" autoplay="" loop="">
                 <source src="/cwu/public/1-mastering-scrolling-in-swiftui-with-scrollview.mp4" alt="mastering-scrolling-in-swiftui-with-scrollview" type="video/mp4" />
             </video>
         </div>
@@ -156,7 +560,7 @@
 <div class="img-mobile-container">
     <div class="iphonePreview">
         <div class="maskedVideo">
-            <video autoplay="" loop="" muted="">
+            <video muted="" autoplay="" loop="">
                 <source src="/cwu/public/2-mastering-scrolling-in-swiftui-with-scrollview.mp4" alt="mastering-scrolling-in-swiftui-with-scrollview" type="video/mp4" />
             </video>
         </div>
